@@ -27,3 +27,16 @@ Route::get('/signUp', function () {
 Route::get('/requestPassword', function () {
     return view('requestPassword');
 });
+
+Route::get('/profile', function () {
+    return view('editProfile');
+});
+
+
+Route::get('/research', function () {
+    return view('research');
+});
+
+Route::get('/createresearch', function () {
+    return view('createResearch');
+});
