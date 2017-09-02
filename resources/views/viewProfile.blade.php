@@ -15,10 +15,21 @@
         	<b>Last Name</b> <br>
         	<b>UserName</b> <br>
         	<b>Email</b> <br>
-        	<b>Password</b> <br>
-        	<b>Edit image</b> <br>
-        	<b>Add Personal Statement</b> <br>
-	        <b>Change your password?</b> <br>
+        	<b>Personal Statement</b> <br>
+            <b>Address</b> <br>
+            <b>City</b> <br>
+            <b>State</b> <br>
+            <b>Country</b> <br>
+            <b>Zip Code</b> <br>
+            <b>Skills</b> <br>
+        </div>
+
+        <div>
+            EDUCATION
+        </div>
+
+        <div>
+            CAREER
         </div>
     </div>
 

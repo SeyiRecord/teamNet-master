@@ -24,7 +24,7 @@ Route::get('/login', function () {
     return view('login');
 });
 
-Route::get('/requestPassword', function () {
+Route::get('/requestpassword', function () {
     return view('requestPassword');
 });
 
@@ -40,11 +40,11 @@ Route::get('/createresearch', function () {
     return view('createResearch');
 });
 
-Route::get('/researchDetails', function () {
+Route::get('/researchdetails', function () {
     return view('researchDetails');
 });
 
-Route::get('/listResearch', function () {
+Route::get('/listresearch', function () {
     return view('viewResearch');
 });
 
