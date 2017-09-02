@@ -1,18 +1,17 @@
 @extends('header')
 <?php
-    define("TITLE", "Create Research");
+    define("TITLE", "Edit Research");
     
 ?>
 
 	<div class="content">
         <div class="title m-b-md">
-            Add Research / Project
+            Edit Research
         </div>
 
         <div style="text-align: center;">
-	        <!-- <div style="text-align: left;">  -->
-	            <form>
-	                <label><b>Topic</b></label>
+	        <form>
+                <label><b>Topic</b></label>
                 <input type="text" placeholder="Enter research/project topic" required> <br><br>
 
                 <label><b>Research/Project Details</b></label> <br>
@@ -37,9 +36,8 @@
 
                 <button type="submit">Save</button>
                 
-	                
-	            </form>
-	        <!-- </div> -->
+            </form>
+
         </div>
     </div>
 

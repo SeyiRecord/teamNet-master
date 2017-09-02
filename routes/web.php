@@ -16,27 +16,38 @@ Route::get('/', function () {
 });
 
 
-Route::get('/login', function () {
-    return view('login');
-});
-
 Route::get('/signUp', function () {
     return view('signUp');
+});
+
+Route::get('/login', function () {
+    return view('login');
 });
 
 Route::get('/requestPassword', function () {
     return view('requestPassword');
 });
 
-Route::get('/profile', function () {
-    return view('editProfile');
+Route::get('/viewprofile', function () {
+    return view('viewProfile');
 });
 
-
-Route::get('/research', function () {
-    return view('research');
+Route::get('/editprofile', function () {
+    return view('editProfile');
 });
 
 Route::get('/createresearch', function () {
     return view('createResearch');
+});
+
+Route::get('/researchDetails', function () {
+    return view('researchDetails');
+});
+
+Route::get('/listResearch', function () {
+    return view('viewResearch');
+});
+
+Route::get('/editresearch', function () {
+    return view('editResearch');
 });

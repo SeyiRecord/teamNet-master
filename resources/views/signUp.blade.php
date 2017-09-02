@@ -14,6 +14,9 @@
                 <label><b>First Name</b></label>
                 <input type="text" placeholder="Enter first name" name="fName" required> <br><br>
 
+                <label><b>Middle Initial</b></label>
+                <input type="text" name="MI" required> <br><br>
+
                 <label><b>Last Name</b></label>
                 <input type="text" placeholder="Enter last name" name="lName" required> <br><br>
 

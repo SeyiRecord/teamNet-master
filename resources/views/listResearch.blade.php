@@ -1,12 +1,12 @@
 @extends('header')
 <?php
-    define("TITLE", "Research");
+    define("TITLE", "List Researches");
     
 ?>
 
 	<div class="content">
         <div class="title m-b-md">
-            Research
+            List of Researches
         </div>
 
         <div style="text-align: center;">
