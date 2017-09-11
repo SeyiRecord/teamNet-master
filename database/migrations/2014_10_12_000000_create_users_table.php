@@ -13,17 +13,16 @@ class CreateUsersTable extends Migration
      */
     public function up()
     {
-        Schema::create('Users', function (Blueprint $table) {
-            $table->string('userID')->unique();
-            $table->string('fName');
-            $table->string('MI');
-            $table->string('lName');
-            $table->string('email')->unique();
-            $table->string('password');
-            $table->string('status');
-            $table->rememberToken();
-            $table->timestamps();
-        });
+        Schema::create('users', function (Blueprint $table) {
+            $table->increments('id');
+
+            // $table->string('username', 32);
+            $table->string('email', 320)->unique();
+            $table->string('password', 64);
+
+            // required for Laravel 4.1.26
+            $table->string('remember_token', 100)->nullable();
+            $table->timestamps();        });
     }
 
     /**
@@ -33,6 +32,6 @@ class CreateUsersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('Users');
+        Schema::dropIfExists('users');
     }
 }

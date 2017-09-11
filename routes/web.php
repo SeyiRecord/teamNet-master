@@ -16,14 +16,6 @@ Route::get('/', function () {
 });
 
 
-Route::get('/signUp', function () {
-    return view('signUp');
-});
-
-Route::get('/login', function () {
-    return view('login');
-});
-
 Route::get('/requestpassword', function () {
     return view('requestPassword');
 });
@@ -51,3 +43,6 @@ Route::get('/listresearch', function () {
 Route::get('/editresearch', function () {
     return view('editResearch');
 });
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
