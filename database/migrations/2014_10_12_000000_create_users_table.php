@@ -14,16 +14,19 @@ class CreateUsersTable extends Migration
     public function up()
     {
         Schema::create('users', function (Blueprint $table) {
-            $table->increments('id');
+            // $table->increments('id');
+            // $table->unsignedInteger('id');
 
-            $table->string('username', 32)->unique();
-            $table->string('email', 320)->unique();
+            $table->string('userName', 32)->primary();
+            $table->string('email', 320);
             $table->string('password', 64);
             $table->string('userType', 32);
+            // $table->primary('username');
 
             // required for Laravel 4.1.26
             $table->string('remember_token', 100)->nullable();
-            $table->timestamps();        });
+            $table->timestamps();
+        });
     }
 
     /**

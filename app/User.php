@@ -23,6 +23,10 @@ class User extends Authenticatable
         'userName', 'email', 'password', 'userType',
     ];
 
+    //To Change primary key to userName
+    protected $primaryKey = 'userName';
+    public $incrementing = false;
+
     /**
      * The attributes that should be hidden for arrays.
      *

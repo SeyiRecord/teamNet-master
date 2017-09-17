@@ -15,10 +15,19 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Auth::routes();
+Route::get('/home', 'HomeController@index')->name('home');
+
+Route::resource('/user', 'UserController' );
 
 Route::get('/requestpassword', function () {
     return view('requestPassword');
 });
+Route::get('/Profile', function () {
+    return view('Profile');
+});
+
+
 
 Route::get('/viewprofile', function () {
     return view('viewProfile');
@@ -43,6 +52,3 @@ Route::get('/listresearch', function () {
 Route::get('/editresearch', function () {
     return view('editResearch');
 });
-Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
