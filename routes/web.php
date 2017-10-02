@@ -23,12 +23,19 @@ Route::resource('/user', 'UserController' );
 Route::get('/requestpassword', function () {
     return view('requestPassword');
 });
+
+Route::resource('userprofile','UserProfileController');
+
+Route::get('/profiles/createuserprofile', 'UserProfileController@create');
+Route::post('/userprofile', 'UserProfileController@store');
+Route::post('userType','UserController@userType')->name('userType');
+
+
+
+/*
 Route::get('/Profile', function () {
     return view('Profile');
 });
-
-
-
 Route::get('/viewprofile', function () {
     return view('viewProfile');
 });
@@ -51,4 +58,4 @@ Route::get('/listresearch', function () {
 
 Route::get('/editresearch', function () {
     return view('editResearch');
-});
+});*/

@@ -16,14 +16,14 @@
                     <div>
                         <H1>Personal Details</H1>
                         <form>
-                            <label><b>User Name: </b></label>
-                            <strong> {{ Auth::user()->userName }}</strong><br><br>
+                            <!-- <label><b>User Name: </b></label>
+                            <strong> {{ Auth::user()->userName }}</strong><br><br> -->
 
                             <label><b>First Name</b></label>
                             <input type="text" placeholder="Enter first name" name="fName" required> <br><br>
 
-                            <label><b>Middle Initial </b></label>
-                            <input type="text" name="MI" required> <br><br>
+                            <!-- <label><b>Middle Initial </b></label>
+                            <input type="text" name="MI" required> <br><br> -->
 
                             <label><b>Last Name</b></label>
                             <input type="text" placeholder="Enter last name" name="lName" required> <br><br>
@@ -53,8 +53,8 @@
                             <label><b>Country</b></label>
                             <input type="text" name="country"> <br><br>
 
-                            <label><b>ZipCode</b></label>
-                            <input type="text" name="zipCode">
+                            <!-- <label><b>ZipCode</b></label>
+                            <input type="text" name="zipCode"> -->
 
                             <button type="submit">Save</button>
                         </form>

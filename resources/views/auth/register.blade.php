@@ -62,21 +62,6 @@
 
                         <div class="form-group">
                             <div class="col-md-6 col-md-offset-4">
-                            <label>Select your status :</label><br/>
-                                <label><input checked="checked" name="userType" type="radio" value="Student">
-                                    Student
-                                </input></label></br>
-                                <label><input name="userType" type="radio" value="Faculty">
-                                    Faculty
-                                </input></label></br>
-                                <label><input name="userType" type="radio" value="Organization">
-                                    Organization
-                                </input></label></br>
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <div class="col-md-6 col-md-offset-4">
                                 <button type="submit" class="btn btn-primary">
                                     Register
                                 </button>

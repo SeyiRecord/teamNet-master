@@ -3,9 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\User;
+use App\UserProfile;
 
-class UserController extends Controller
+class UserProfileController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -25,6 +25,7 @@ class UserController extends Controller
     public function create()
     {
         //
+        return view('profiles.createuserprofile');
     }
 
     /**
@@ -36,6 +37,10 @@ class UserController extends Controller
     public function store(Request $request)
     {
         //
+        $profile->fName= $request['fName'];
+        $profile->lName= $request['lName'];
+        // add other fields
+        $profile->save();
     }
 
     /**
@@ -47,9 +52,6 @@ class UserController extends Controller
     public function show($id)
     {
         //
-        $userName = \Auth::user()->userName;
-        $userDetails = User::where('userName', $userName); //User::where('userName', $userName)->get();
-        return $userDetails;
     }
 
     /**
@@ -61,6 +63,7 @@ class UserController extends Controller
     public function edit($id)
     {
         //
+        return view('profiles/edituserprofile');
     }
 
     /**
@@ -84,14 +87,5 @@ class UserController extends Controller
     public function destroy($id)
     {
         //
-    }
-
-    public function userType(Request $request) {
-        $users = User::where('userName', \Auth::user()->userName)->get();
-        $user = $users[0];
-        $user->userType = $request->userType;
-        $user->save();
-        return redirect('profiles/createuserprofile');
-        
     }
 }
