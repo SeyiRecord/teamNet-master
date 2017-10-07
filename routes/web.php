@@ -18,17 +18,18 @@ Route::get('/', function () {
 Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::resource('/user', 'UserController' );
-
 Route::get('/requestpassword', function () {
     return view('requestPassword');
 });
 
-Route::resource('userprofile','UserProfileController');
+Route::resource('/user', 'UserController' );
 
-Route::get('/profiles/createuserprofile', 'UserProfileController@create');
-Route::post('/userprofile', 'UserProfileController@store');
+Route::get('/userprofiles/createuserprofile', 'UserprofileController@create');
+Route::post('/userprofiles/createuserprofile', 'UserprofileController@store');
 Route::post('userType','UserController@userType')->name('userType');
+Route::resource('userprofile','UserprofileController');
+Route::resource('userprofiles','UserprofileController');
+
 
 
 

@@ -3,9 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\UserProfile;
+use App\Userprofile;
+use Auth;
 
-class UserProfileController extends Controller
+class UserprofileController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,6 +16,8 @@ class UserProfileController extends Controller
     public function index()
     {
         //
+        $userProfiles = UserProfile::all();
+        return view('userprofiles.index',compact('userprofiles'));
     }
 
     /**
@@ -22,10 +25,11 @@ class UserProfileController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
         //
-        return view('profiles.createuserprofile');
+        $users = $request->session()->get('userName');
+        return view('userprofiles.createuserprofile');
     }
 
     /**
@@ -37,10 +41,18 @@ class UserProfileController extends Controller
     public function store(Request $request)
     {
         //
-        $profile->fName= $request['fName'];
-        $profile->lName= $request['lName'];
+        $userProfile = new userProfile();
+        $userProfile->userName = Auth::user()->userName ;
+        $userProfile->fName= $request['fName'];
+        $userProfile->lName= $request['lName'];
+        $userProfile->profileSummary= $request['profileSummary'];
+        $userProfile->city= $request['city'];
+        $userProfile->state= $request['state'];
+        $userProfile->country= $request['country'];
+        $userProfile->profileImg= $request['profileImg'];
         // add other fields
-        $profile->save();
+        $userProfile->save();
+        return redirect('/');
     }
 
     /**
@@ -63,7 +75,7 @@ class UserProfileController extends Controller
     public function edit($id)
     {
         //
-        return view('profiles/edituserprofile');
+        return view('userprofiles/edituserprofile');
     }
 
     /**
@@ -87,5 +99,7 @@ class UserProfileController extends Controller
     public function destroy($id)
     {
         //
+        Profile::find($id)->delete();
+        return redirect('userprofiles');
     }
 }

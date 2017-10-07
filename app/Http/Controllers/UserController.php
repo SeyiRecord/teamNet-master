@@ -91,7 +91,7 @@ class UserController extends Controller
         $user = $users[0];
         $user->userType = $request->userType;
         $user->save();
-        return redirect('profiles/createuserprofile');
+        return redirect('userprofiles/createuserprofile');
         
     }
 }
