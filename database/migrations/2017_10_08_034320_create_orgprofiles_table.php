@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateUserprofilesTable extends Migration
+class CreateOrgprofilesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,16 +13,21 @@ class CreateUserprofilesTable extends Migration
      */
     public function up()
     {
-        Schema::create('userprofiles', function (Blueprint $table) {
-            $table->increments('profileID');
+        Schema::create('orgprofiles', function (Blueprint $table) {
+            $table->string('orgID')->unique();
             $table->string('userName', 32);
-            $table->string('fName');
-            $table->string('lName');
-            $table->text('profileSummary');
+            $table->string('name');
+            $table->string('motto')->nullable();
+            $table->text('vision')->nullable();
+            $table->text('details');
+            $table->string('industry')->nullable();
+            $table->text('location');
             $table->string('city');
             $table->string('state');
             $table->string('country');
-            $table->binary('profileImg');
+            $table->integer('zipCode')->nullable();
+            $table->string('webAddress');
+            $table->binary('logo');
             $table->timestamps();
             $table->foreign('userName')->references('userName')->on('users');
         });
@@ -35,6 +40,6 @@ class CreateUserprofilesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('userprofiles');
+        Schema::dropIfExists('orgprofiles');
     }
 }

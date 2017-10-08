@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateResearchesTable extends Migration
+class CreateUserprofilesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,19 +13,18 @@ class CreateResearchesTable extends Migration
      */
     public function up()
     {
-        Schema::create('Researches', function (Blueprint $table) {
-            $table->increments('researchID')->unique();
-            $table->string('ownerID');
-            $table->string('topic');
-            $table->text('summary');
-            $table->dateTime('startDate');
-            $table->dateTime('endDate');
-            $table->text('location');
+        Schema::create('userprofiles', function (Blueprint $table) {
+            $table->increments('profileID');
+            $table->string('userName', 32);
+            $table->string('fName');
+            $table->string('lName');
+            $table->text('profileSummary');
             $table->string('city');
             $table->string('state');
             $table->string('country');
-            $table->integer('zipCode');
+            $table->binary('profileImg');
             $table->timestamps();
+            $table->foreign('userName')->references('userName')->on('users');
         });
     }
 
@@ -36,6 +35,6 @@ class CreateResearchesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('Researches');
+        Schema::dropIfExists('userprofiles');
     }
 }
