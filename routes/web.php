@@ -17,10 +17,9 @@ Route::get('/', function () {
 
 Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/usertype', function () {return view('usertype');});
 
-Route::get('/requestpassword', function () {
-    return view('requestPassword');
-});
+Route::get('/requestpassword', function () {return view('requestPassword');});
 
 Route::resource('/user', 'UserController' );
 

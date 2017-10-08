@@ -17,35 +17,6 @@
                     You are logged in as <strong>{{ Auth::user()->userName }}</strong>!
                 </div>
                 
-                <div class="panel-body">
-                    <form class="form-horizontal" method="POST" action="{{ route('userType') }}">
-                        {{ csrf_field() }}
-
-                      
-                        <div class="form-group">
-                            <div class="col-md-6 col-md-offset-4">
-                            <label>Select your status :</label><br/>
-                                <label><input checked="checked" name="userType" type="radio" value="Student">
-                                    Student
-                                </input></label></br>
-                                <label><input name="userType" type="radio" value="Faculty">
-                                    Faculty
-                                </input></label></br>
-                                <label><input name="userType" type="radio" value="Organization">
-                                    Organization
-                                </input></label></br>
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <div class="col-md-6 col-md-offset-4">
-                                <button type="submit" class="btn btn-primary">
-                                    Register
-                                </button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
             </div>
         </div>
     </div>
