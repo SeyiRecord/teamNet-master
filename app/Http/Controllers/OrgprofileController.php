@@ -3,10 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Userprofile;
+use App\Orgprofile;
 use Auth;
 
-class UserprofileController extends Controller
+class OrgprofileController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,8 +16,8 @@ class UserprofileController extends Controller
     public function index()
     {
         //
-        $userProfiles = UserProfile::all();
-        return view('userprofiles.index',compact('userprofiles'));
+        $orgProfiles = OrgProfile::all();
+        return view('orgprofiles.index', compact('orgprofiles'));
     }
 
     /**
@@ -25,11 +25,11 @@ class UserprofileController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create(Request $request)
+    public function create()
     {
         //
         $users = $request->session()->get('userName');
-        return view('userprofiles.createuserprofile');
+        return view('orgprofiles.createorgprofile');
     }
 
     /**
@@ -41,17 +41,22 @@ class UserprofileController extends Controller
     public function store(Request $request)
     {
         //
-        $userProfile = new userProfile();
-        $userProfile->userName = Auth::user()->userName ;
-        $userProfile->fName= $request['fName'];
-        $userProfile->lName= $request['lName'];
-        $userProfile->profileSummary= $request['profileSummary'];
-        $userProfile->city= $request['city'];
-        $userProfile->state= $request['state'];
-        $userProfile->country= $request['country'];
-        $userProfile->profileImg= $request['profileImg'];
+        $orgProfile = new orgProfile();
+        $orgProfile->orgName = Auth::org()->orgName ;
+        $orgProfile->name= $request['name'];
+        $orgProfile->motto= $request['motto'];
+        $orgProfile->vision= $request['vision'];
+        $orgProfile->details= $request['details'];
+        $orgProfile->industry= $request['industry'];
+        $orgProfile->location= $request['location'];
+        $orgProfile->city= $request['city'];
+        $orgProfile->state= $request['state'];
+        $orgProfile->country= $request['country'];
+        $orgProfile->zipCode= $request['zipCode'];
+        $orgProfile->webAddress= $request['webAddress'];
+        $orgProfile->logo= $request['logo'];
 
-        $userProfile->save();
+        $orgProfile->save();
         return redirect('/');
     }
 
@@ -75,7 +80,7 @@ class UserprofileController extends Controller
     public function edit($id)
     {
         //
-        return view('userprofiles/edituserprofile');
+        return view('orgprofiles/editorgprofile');
     }
 
     /**
@@ -99,7 +104,7 @@ class UserprofileController extends Controller
     public function destroy($id)
     {
         //
-        userProfile::find($id)->delete();
-        return redirect('userprofiles');
+        orgProfile::find($id)->delete();
+        return redirect('orgprofiles');
     }
 }
