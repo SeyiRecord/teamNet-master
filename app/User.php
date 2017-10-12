@@ -24,6 +24,7 @@ class User extends Authenticatable
     ];
 
     //To Change primary key to userName
+    // Must be changed in vendor\laravel\framework\src\Illuminate\Foundation\Auth : function username()
     protected $primaryKey = 'userName';
     public $incrementing = false;
 

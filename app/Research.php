@@ -17,7 +17,7 @@ class Research extends Model
      * @var array
      */
     protected $fillable = [
-        'topic', 'summary', 'startDate','endDate','location', 'city', 'state', 'country','zipCode',
+        'ownerID','topic', 'summary', 'startDate','endDate','location', 'city', 'state', 'country','zipCode',
     ];
 
     /**

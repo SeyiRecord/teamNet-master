@@ -2,7 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Research;
+use Auth;
+use App\User;
+
+
 use Illuminate\Http\Request;
+// use Illuminate\Support\Facades\Request;
 
 class ResearchController extends Controller
 {
@@ -14,6 +20,9 @@ class ResearchController extends Controller
     public function index()
     {
         //
+        $researches = Research::all();
+        return view('researches.index');
+        // return view('home');
     }
 
     /**
@@ -21,10 +30,19 @@ class ResearchController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
         //
+        // $users = $request->session()->get('userName');
+        $users = Auth::user()->userName; 
+        return view('researches.createresearch');
     }
+/*
+    public function save(Request $requestSave)
+    {
+        $this->store($requestSave);
+        return redirect()->route('researches.index')->with('message', 'Research created Successfully');
+    }*/
 
     /**
      * Store a newly created resource in storage.
@@ -35,6 +53,22 @@ class ResearchController extends Controller
     public function store(Request $request)
     {
         //
+        $research = new research();
+        $research->ownerID = Auth::user()->userName;
+        // $research = Request::all();
+        $research->topic= $request['topic'];
+        $research->summary= $request['summary'];
+        $research->startDate= $request['startDate'];
+        $research->endDate= $request['endDate'];
+        $research->location= $request['location'];
+        $research->city= $request['city'];
+        $research->state= $request['state'];
+        $research->country= $request['country'];
+        $research->zipCode= $request['zipCode'];
+        $research->save();
+        
+        // Research::create($research);
+        return redirect('researches');
     }
 
     /**
@@ -46,6 +80,8 @@ class ResearchController extends Controller
     public function show($id)
     {
         //
+        $research = Research::find($researchID);
+        return view('researches.show', compact('researches'));
     }
 
     /**
@@ -57,6 +93,8 @@ class ResearchController extends Controller
     public function edit($id)
     {
         //
+        $research=Research::find($researchID);
+        return view('researches.edit', compact('researches'));
     }
 
     /**
@@ -69,6 +107,10 @@ class ResearchController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $researchUpdate=Request::all();
+        $research = Research::find($researchID);
+        $research->update($researchUpdate);
+        return redirect('researches');
     }
 
     /**
@@ -80,5 +122,7 @@ class ResearchController extends Controller
     public function destroy($id)
     {
         //
+        Research::find($id)->delete();
+        return redirect('researches');
     }
 }

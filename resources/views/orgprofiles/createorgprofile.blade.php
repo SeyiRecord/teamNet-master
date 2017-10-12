@@ -13,7 +13,6 @@
 
                         <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
                             <label for="name" class="col-md-4 control-label">Name</label>
-
                             <div class="col-md-6">
                                 <input id="name" type="text" class="form-control" name="name" value="{{ old('name') }}" required autofocus>
 
@@ -27,7 +26,6 @@
                         
                         <div class="form-group{{ $errors->has('motto') ? ' has-error' : '' }}">
                             <label for="motto" class="col-md-4 control-label">Motto</label>
-
                             <div class="col-md-6">
                                 <input id="motto" type="text" class="form-control" name="motto" value="{{ old('motto') }}" required autofocus>
 
@@ -41,7 +39,6 @@
 
                        <div class="form-group{{ $errors->has('vision') ? ' has-error' : '' }}">
                             <label for="vision" class="col-md-4 control-label">Vision</label>
-
                             <div class="col-md-6">
                                 <textarea rows="4" cols="50" class="form-control" name="vision" value="{{ old('vision') }}" required autofocus> </textarea>
 
@@ -55,7 +52,6 @@
 
                         <div class="form-group{{ $errors->has('details') ? ' has-error' : '' }}">
                             <label for="details" class="col-md-4 control-label">Details</label>
-
                             <div class="col-md-6">
                                 <textarea rows="4" cols="50" class="form-control" name="details" value="{{ old('details') }}" required autofocus> </textarea>
 
@@ -134,10 +130,9 @@
                         </div>
 
                         <div class="form-group{{ $errors->has('zipcode') ? ' has-error' : '' }}">
-                            <label for="zipcode" class="col-md-4 control-label">Zipcode</label>
-
+                            <label for="zipcode" class="col-md-4 control-label">ZipCode</label>
                             <div class="col-md-6">
-                                <textarea rows="4" cols="50" class="form-control" name="zipcode" value="{{ old('zipcode') }}" required autofocus> </textarea>
+                                <input id="zipcode" type="text" class="form-control" name="zipcode" value="{{ old('zipcode') }}" required autofocus>
 
                                 @if ($errors->has('zipcode'))
                                     <span class="help-block">

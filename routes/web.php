@@ -29,6 +29,12 @@ Route::post('userType','UserController@userType')->name('userType');
 Route::resource('userprofile','UserprofileController');
 Route::resource('userprofiles','UserprofileController');
 
+Route::get('/researches', 'ResearchController@index');
+Route::get('/createresearch', 'ResearchController@create');
+Route::post('/researches/store', 'ResearchController@store');
+
+// Route::resource('/researches', 'ResearchController');
+
 
 
 
