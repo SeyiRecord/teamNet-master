@@ -44,4 +44,8 @@ class User extends Authenticatable
     public function orgProfile() {
         return $this->hasOne(Orgprofile::class);
     }
+
+    public function research() {
+        return $this->hasMany(Research::class);
+    }
 }

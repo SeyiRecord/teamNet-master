@@ -29,11 +29,11 @@ Route::post('userType','UserController@userType')->name('userType');
 Route::resource('userprofile','UserprofileController');
 Route::resource('userprofiles','UserprofileController');
 
-Route::get('/researches', 'ResearchController@index');
+// Route::get('/researches', 'ResearchController@index');
 Route::get('/createresearch', 'ResearchController@create');
+Route::get('/researches/showresearch/{id}', 'ResearchController@show');
 Route::post('/researches/store', 'ResearchController@store');
-
-// Route::resource('/researches', 'ResearchController');
+Route::resource('/researches', 'ResearchController');
 
 
 

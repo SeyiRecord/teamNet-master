@@ -10,6 +10,7 @@ class Research extends Model
 {
     //
     use Notifiable;
+    protected $startDate = ['startDate'];
 
     /**
      * The attributes that are mass assignable.
@@ -17,7 +18,7 @@ class Research extends Model
      * @var array
      */
     protected $fillable = [
-        'ownerID','topic', 'summary', 'startDate','endDate','location', 'city', 'state', 'country','zipCode',
+        'ownerID','topic', 'summary', 'startDate','endDate','organization', 'location', 'city', 'state', 'country','zipCode',
     ];
 
     /**

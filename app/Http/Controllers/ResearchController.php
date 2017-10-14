@@ -21,7 +21,7 @@ class ResearchController extends Controller
     {
         //
         $researches = Research::all();
-        return view('researches.index');
+        return view('researches.index', compact('researches'));
         // return view('home');
     }
 
@@ -37,7 +37,7 @@ class ResearchController extends Controller
         $users = Auth::user()->userName; 
         return view('researches.createresearch');
     }
-/*
+    /*
     public function save(Request $requestSave)
     {
         $this->store($requestSave);
@@ -55,11 +55,11 @@ class ResearchController extends Controller
         //
         $research = new research();
         $research->ownerID = Auth::user()->userName;
-        // $research = Request::all();
         $research->topic= $request['topic'];
         $research->summary= $request['summary'];
         $research->startDate= $request['startDate'];
         $research->endDate= $request['endDate'];
+        $research->organization= $request['organization'];
         $research->location= $request['location'];
         $research->city= $request['city'];
         $research->state= $request['state'];
@@ -67,7 +67,6 @@ class ResearchController extends Controller
         $research->zipCode= $request['zipCode'];
         $research->save();
         
-        // Research::create($research);
         return redirect('researches');
     }
 
@@ -80,8 +79,8 @@ class ResearchController extends Controller
     public function show($id)
     {
         //
-        $research = Research::find($researchID);
-        return view('researches.show', compact('researches'));
+        $research = Research::find($id);
+        return view('researches.showresearch', compact('research'));
     }
 
     /**
@@ -94,7 +93,7 @@ class ResearchController extends Controller
     {
         //
         $research=Research::find($researchID);
-        return view('researches.edit', compact('researches'));
+        return view('researches.edit', compact('research'));
     }
 
     /**

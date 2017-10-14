@@ -14,13 +14,14 @@ class CreateResearchesTable extends Migration
     public function up()
     {
         Schema::create('researches', function (Blueprint $table) {
-            $table->increments('researchID');
+            $table->increments('id');
             $table->string('ownerID', 32);
             $table->foreign('ownerID')->references('userName')->on('users');
             $table->string('topic');
             $table->text('summary');
             $table->dateTime('startDate');
             $table->dateTime('endDate');
+            $table->text('organization');
             $table->text('location');
             $table->string('city');
             $table->string('state');
