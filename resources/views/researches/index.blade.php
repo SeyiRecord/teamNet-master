@@ -15,10 +15,10 @@
                             <table >
                                 <thead>
                                     <tr>
-                                        <th>Topic</th>
-                                        <th>Summary</th>
+                                        <th>Topic&emsp;</th>
                                         <th>Start Date </th>
                                         <th>End Date </th>
+                                        <th>Organization&emsp;</th>
                                         <th>Location&emsp;</th>
                                         <th>City &emsp;</th>
                                         <th>State &emsp;</th>
@@ -30,15 +30,15 @@
                                     @foreach($researches as $research)
                                     @if($research->ownerID == Auth::user()->userName)
                                     <tr>
-                                        <td>{{$research->topic}}</td>
-                                        <td>{{$research->summary}}</td>
-                                        <td>{{$research->startDate}}</td>
-                                        <td>{{$research->endDate}} </td>
+                                        <td><a href="/researches/showresearch/{{$research->id}}" target="_blank">{{$research->topic}}</a>&emsp;</td>
+                                        <td>{{$research->startDate}}&emsp;</td>
+                                        <td>{{$research->endDate}}&emsp;</td>
+                                        <td>{{$research->organization}}&emsp;</td>
                                         <td>{{$research->location}}&emsp;</td>
                                         <td>{{$research->city}}&emsp;</td>
                                         <td>{{$research->state}}&emsp;</td>
                                         <td>{{$research->country}}&emsp;</td>
-                                        <td><a href="/researches/showresearch/{id}">Show </a></td>
+                                        <td><a href="/researches/editresearch/{{$research->id}}" target="_blank">Edit </a></td>
                                     </tr>
                                     @endif
                                     @endforeach

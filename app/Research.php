@@ -10,7 +10,7 @@ class Research extends Model
 {
     //
     use Notifiable;
-    protected $startDate = ['startDate'];
+    // protected $startDate = ['startDate'];
 
     /**
      * The attributes that are mass assignable.

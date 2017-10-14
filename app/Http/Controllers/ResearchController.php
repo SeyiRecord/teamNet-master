@@ -92,8 +92,8 @@ class ResearchController extends Controller
     public function edit($id)
     {
         //
-        $research=Research::find($researchID);
-        return view('researches.edit', compact('research'));
+        $research=Research::find($id);
+        return view('researches.editresearch', compact('research'));
     }
 
     /**
@@ -107,7 +107,7 @@ class ResearchController extends Controller
     {
         //
         $researchUpdate=Request::all();
-        $research = Research::find($researchID);
+        $research = Research::find($id);
         $research->update($researchUpdate);
         return redirect('researches');
     }

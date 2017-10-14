@@ -32,6 +32,7 @@ Route::resource('userprofiles','UserprofileController');
 // Route::get('/researches', 'ResearchController@index');
 Route::get('/createresearch', 'ResearchController@create');
 Route::get('/researches/showresearch/{id}', 'ResearchController@show');
+Route::get('/researches/editresearch/{id}', 'ResearchController@edit');
 Route::post('/researches/store', 'ResearchController@store');
 Route::resource('/researches', 'ResearchController');
 

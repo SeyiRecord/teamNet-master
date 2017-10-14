@@ -5,124 +5,151 @@
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
+
                 <div class="panel-heading"><H2></H2>Show Research Dashboard</div>
                     <div class="panel-body">
                         {{ csrf_field() }}
-                        {!! Form::open(['method' => 'PUT', 'url' => '/researches/showresearch/{id}', 'files' => true,]) !!}
-                        <div class="form-group{{ $errors->has('topic') ? ' has-error' : '' }}">
-                            <label for="topic" class="col-md-4 control-label">Topic</label>
-                            <div class="col-md-6">
-                                <input id="topic" type="topic" class="form-control" name="topic" value="{{ old('topic') }}" required autofocus disabled= 'disabled'>
-                                @if ($errors->has('topic'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('topic') }}</strong>
-                                    </span>
-                                @endif
+                        {!! Form::model($research,['method' => 'PUT', 'route' => ['researches.update', $research->id], 'files' => true,]) !!}
+
+                        <div class="row">
+                            <div class="col-md-8 form-group">
+                                {!! Form::label('topic', 'topic', ['class' => 'col-sm-4 control-label']) !!}
+                                <div class="col-sm-6 ">
+                                    {!! Form::text('topic', old('topic'), array('class' => 'form-control','id' => 'topic','required' => 'required','disabled'=>'disabled'))!!}
+                                    <p class="help-block"></p>
+                                    @if($errors->has('topic'))
+                                        <p class="help-block">
+                                            {{ $errors->first('topic') }}
+                                        </p>
+                                    @endif
+                                </div> 
                             </div>
                         </div>
 
-                        <div class="form-group{{ $errors->has('summary') ? ' has-error' : '' }}">
-                            <label for="summary" class="col-md-4 control-label">Summary</label>
-                            <div class="col-md-6">
-                                <textarea rows="4" cols="50" class="form-control" name="summary" value="{{ old('summary') }}" required autofocus disabled= 'disabled'> </textarea>
-
-                                @if ($errors->has('summary'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('summary') }}</strong>
-                                    </span>
-                                @endif
+                        <div class="row">
+                            <div class="col-md-8 form-group">
+                                {!! Form::label('summary', 'Summary', ['class' => 'col-sm-4 control-label']) !!}
+                                <div class="col-sm-6 ">
+                                    {!! Form::textarea('summary', old('summary'), array('class' => 'form-control','id' => 'summary','required' => 'required','disabled'=>'disabled'))!!}
+                                    <p class="help-block"></p>
+                                    @if($errors->has('summary'))
+                                        <p class="help-block">
+                                            {{ $errors->first('summary') }}
+                                        </p>
+                                    @endif
+                                </div>
                             </div>
                         </div>
 
-                        <div class="form-group{{ $errors->has('startDate') ? ' has-error' : '' }}">
-                            <label for="startDate" class="col-md-4 control-label">Start Date</label>
-                            <div class="col-md-6">
-                                <input id="startDate" type="date" class="form-control" name="startDate" value="{{ old('startDate') }}" required autofocus disabled= 'disabled'>
-
-                                @if ($errors->has('startDate'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('startDate') }}</strong>
-                                    </span>
-                                @endif
+                        <div class="row">
+                            <div class="col-md-8 form-group">
+                                {!! Form::label('startDate', 'startDate', ['class' => 'col-sm-4 control-label']) !!}
+                                <div class="col-sm-6 ">
+                                    {!! Form::text('startDate', old('startDate'), array('class'=>'datepicker form-control', 'id' => 'startDate', 'placeholder'=>'MM/DD/YYYY','required' => 'required','disabled'=>'disabled'))!!}
+                                    <p class="help-block"></p>
+                                    @if($errors->has('startDate'))
+                                        <p class="help-block">
+                                            {{ $errors->first('startDate') }}
+                                        </p>
+                                    @endif
+                                </div> 
                             </div>
                         </div>
 
-                        <div class="form-group{{ $errors->has('endDate') ? ' has-error' : '' }}">
-                            <label for="endDate" class="col-md-4 control-label">End Date</label>
-                            <div class="col-md-6">
-                                <input id="endDate" type="date" class="form-control" name="endDate" value="{{ old('endDate') }}" required autofocus disabled= 'disabled'>
-                                @if ($errors->has('endDate'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('endDate') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-                        
-                        <div class="form-group{{ $errors->has('location') ? ' has-error' : '' }}">
-                            <label for="location" class="col-md-4 control-label">Location</label>
-                            <div class="col-md-6">
-                                <textarea rows="4" cols="50" class="form-control" name="location" value="{{ old('location') }}" required autofocus disabled= 'disabled'> </textarea>
-                                @if ($errors->has('location'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('location') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-                        
-                                                
-                        <div class="form-group{{ $errors->has('city') ? ' has-error' : '' }}">
-                            <label for="city" class="col-md-4 control-label">City</label>
-                            <div class="col-md-6">
-                                <input id="city" type="text" class="form-control" name="city" value="{{ old('city') }}" required autofocus disabled= 'disabled'>
-                                @if ($errors->has('city'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('city') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-                        
-                        <div class="form-group{{ $errors->has('state') ? ' has-error' : '' }}">
-                            <label for="state" class="col-md-4 control-label">State</label>
-                            <div class="col-md-6">
-                                <input id="state" type="text" class="form-control" name="state" value="{{ old('state') }}" required autofocus disabled= 'disabled'>
-                                @if ($errors->has('state'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('state') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-                        
-                        <div class="form-group{{ $errors->has('country') ? ' has-error' : '' }}">
-                            <label for="country" class="col-md-4 control-label">Country</label>
-                            <div class="col-md-6">
-                                <input id="country" type="text" class="form-control" name="country" value="{{ old('country') }}" required autofocus disabled= 'disabled'>
-                                @if ($errors->has('country'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('country') }}</strong>
-                                    </span>
-                                @endif
+                        <div class="row">
+                            <div class="col-md-8 form-group">
+                                {!! Form::label('endDate', 'endDate', ['class' => 'col-sm-4 control-label']) !!}
+                                <div class="col-sm-6 ">
+                                    {!! Form::text('endDate', old('endDate'), array('class'=>'datepicker form-control', 'id' => 'endDate', 'placeholder'=>'MM/DD/YYYY','required' => 'required','disabled'=>'disabled'))!!}
+                                    <p class="help-block"></p>
+                                    @if($errors->has('endDate'))
+                                        <p class="help-block">
+                                            {{ $errors->first('endDate') }}
+                                        </p>
+                                    @endif
+                                </div> 
                             </div>
                         </div>
 
-                        <div class="form-group{{ $errors->has('zipcode') ? ' has-error' : '' }}">
-                            <label for="zipcode" class="col-md-4 control-label">ZipCode</label>
-                            <div class="col-md-6">
-                                <input id="zipcode" type="text" class="form-control" name="zipcode" value="{{ old('zipcode') }}" required autofocus disabled= 'disabled'>
-                                @if ($errors->has('zipcode'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('zipcode') }}</strong>
-                                    </span>
-                                @endif
+                         <div class="row">
+                            <div class="col-md-8 form-group">
+                                {!! Form::label('organization', 'organization', ['class' => 'col-sm-4 control-label']) !!}
+                                <div class="col-sm-6 ">
+                                    {!! Form::text('organization', old('organization'), array('class' => 'form-control','id' => 'organization','required' => 'required','disabled'=>'disabled'))!!}
+                                    <p class="help-block"></p>
+                                    @if($errors->has('organization'))
+                                        <p class="help-block">
+                                            {{ $errors->first('organization') }}
+                                        </p>
+                                    @endif
+                                </div> 
                             </div>
                         </div>
 
-                        
+                        <div class="row">
+                            <div class="col-md-8 form-group">
+                                {!! Form::label('location', 'location', ['class' => 'col-sm-4 control-label']) !!}
+                                <div class="col-sm-6 ">
+                                    {!! Form::text('location', old('location'), array('class' => 'form-control','id' => 'location','required' => 'required','disabled'=>'disabled'))!!}
+                                    <p class="help-block"></p>
+                                    @if($errors->has('location'))
+                                        <p class="help-block">
+                                            {{ $errors->first('location') }}
+                                        </p>
+                                    @endif
+                                </div> 
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-8 form-group">
+                                {!! Form::label('city', 'city', ['class' => 'col-sm-4 control-label']) !!}
+                                <div class="col-sm-6 ">
+                                    {!! Form::text('city', old('city'), array('class' => 'form-control','id' => 'city','required' => 'required','disabled'=>'disabled'))!!}
+                                    <p class="help-block"></p>
+                                    @if($errors->has('city'))
+                                        <p class="help-block">
+                                            {{ $errors->first('city') }}
+                                        </p>
+                                    @endif
+                                </div> 
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-8 form-group">
+                                {!! Form::label('state', 'state', ['class' => 'col-sm-4 control-label']) !!}
+                                <div class="col-sm-6 ">
+                                    {!! Form::text('state', old('state'), array('class' => 'form-control','id' => 'state','required' => 'required','disabled'=>'disabled'))!!}
+                                    <p class="help-block"></p>
+                                    @if($errors->has('state'))
+                                        <p class="help-block">
+                                            {{ $errors->first('state') }}
+                                        </p>
+                                    @endif
+                                </div> 
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-8 form-group">
+                                {!! Form::label('country', 'country', ['class' => 'col-sm-4 control-label']) !!}
+                                <div class="col-sm-6 ">
+                                    {!! Form::text('country', old('country'), array('class' => 'form-control','id' => 'country','required' => 'required','disabled'=>'disabled'))!!}
+                                    <p class="help-block"></p>
+                                    @if($errors->has('country'))
+                                        <p class="help-block">
+                                            {{ $errors->first('country') }}
+                                        </p>
+                                    @endif
+                                </div> 
+                            </div>
+                        </div>
+
                     </form>
                     {!! Form::close() !!}
+                    <h4><a href = "/createresearch">Create New Research</a> </h4>
+                    <h4><a href = "/researches">List Researches</a> <br></h4
                 </div>
 
             </div>
