@@ -14,7 +14,7 @@ class CreateOrgprofilesTable extends Migration
     public function up()
     {
         Schema::create('orgprofiles', function (Blueprint $table) {
-            $table->increments('orgID');
+            $table->increments('id');
             $table->string('userName', 32)->unique();
             $table->string('name');
             $table->string('motto')->nullable();

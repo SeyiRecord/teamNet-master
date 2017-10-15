@@ -24,9 +24,11 @@ Route::get('/requestpassword', function () {return view('requestPassword');});
 Route::resource('/user', 'UserController' );
 
 Route::get('/userprofiles/createuserprofile', 'UserprofileController@create');
+Route::get('/userprofiles/edituserprofile/{id}', 'UserprofileController@edit');
+Route::get('/userprofiles/showuser/{id}', 'UserprofileController@show');
 Route::post('/userprofiles/createuserprofile', 'UserprofileController@store');
 Route::post('userType','UserController@userType')->name('userType');
-Route::resource('userprofile','UserprofileController');
+// Route::resource('userprofile','UserprofileController');
 Route::resource('userprofiles','UserprofileController');
 
 // Route::get('/researches', 'ResearchController@index');

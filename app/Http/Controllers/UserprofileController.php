@@ -16,7 +16,7 @@ class UserprofileController extends Controller
     public function index()
     {
         //
-        $userProfiles = UserProfile::all();
+        $userProfiles = Userprofile::all();
         return view('userprofiles.index',compact('userprofiles'));
     }
 
@@ -41,7 +41,7 @@ class UserprofileController extends Controller
     public function store(Request $request)
     {
         //
-        $userProfile = new userProfile();
+        $userProfile = new userprofile();
         $userProfile->userName = Auth::user()->userName ;
         $userProfile->fName= $request['fName'];
         $userProfile->lName= $request['lName'];
@@ -75,7 +75,9 @@ class UserprofileController extends Controller
     public function edit($id)
     {
         //
-        return view('userprofiles/edituserprofile');
+        //
+        $userProfile=Userprofile::find($id);
+        return view('userprofiles.edituserprofile', compact('userProfile'));
     }
 
     /**

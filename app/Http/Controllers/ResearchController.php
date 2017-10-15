@@ -6,9 +6,8 @@ use App\Research;
 use Auth;
 use App\User;
 
-
 use Illuminate\Http\Request;
-// use Illuminate\Support\Facades\Request;
+use Illuminate\Support\Facades\Input;
 
 class ResearchController extends Controller
 {
@@ -22,7 +21,6 @@ class ResearchController extends Controller
         //
         $researches = Research::all();
         return view('researches.index', compact('researches'));
-        // return view('home');
     }
 
     /**
@@ -33,7 +31,6 @@ class ResearchController extends Controller
     public function create(Request $request)
     {
         //
-        // $users = $request->session()->get('userName');
         $users = Auth::user()->userName; 
         return view('researches.createresearch');
     }
@@ -106,9 +103,29 @@ class ResearchController extends Controller
     public function update(Request $request, $id)
     {
         //
-        $researchUpdate=Request::all();
+        if (Input::get('store')) {
+            $this->updateRecord($request, $id);
+            return redirect()->route('researches.index')->with('message', 'Form Submitted Successfully');
+        }
+    }
+
+    public function updateRecord(Request $request, $id)
+    {
+
         $research = Research::find($id);
-        $research->update($researchUpdate);
+        \DB::table('researches')->where('id', $research->id)->update([
+            'topic' => $research->topic,
+            'summary' => $research->summary,
+            'startDate' => $research->startDate,
+            'endDate' => $research->endDate,
+            'organization' => $research->organization,
+            'location' => $research->location,
+            'city' => $research->city,
+            'state' => $research->state,
+            'country' => $research->country,
+            'zipCode' => $research->zipCode,]
+         );
+        $research->update($request->all());
         return redirect('researches');
     }
 
