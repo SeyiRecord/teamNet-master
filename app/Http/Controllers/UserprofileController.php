@@ -16,7 +16,7 @@ class UserprofileController extends Controller
     public function index()
     {
         //
-        $userProfiles = Userprofile::all();
+        $userProfiles = UserProfile::all();
         return view('userprofiles.index',compact('userprofiles'));
     }
 
@@ -41,7 +41,7 @@ class UserprofileController extends Controller
     public function store(Request $request)
     {
         //
-        $userProfile = new userprofile();
+        $userProfile = new userProfile();
         $userProfile->userName = Auth::user()->userName ;
         $userProfile->fName= $request['fName'];
         $userProfile->lName= $request['lName'];
@@ -64,6 +64,8 @@ class UserprofileController extends Controller
     public function show($id)
     {
         //
+        $userprofile = Userprofile::find($id);
+        return view('userprofiles.showuser', compact('userprofile'));
     }
 
     /**
@@ -76,8 +78,8 @@ class UserprofileController extends Controller
     {
         //
         //
-        $userProfile=Userprofile::find($id);
-        return view('userprofiles.edituserprofile', compact('userProfile'));
+        $user = Userprofile::find($id);
+        return view('userprofiles.edituserprofile', compact('user'));
     }
 
     /**
@@ -89,7 +91,21 @@ class UserprofileController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        
+        unset($request['_method']);
+        unset($request['_token']);
+
+        $userProfile = Userprofile::where('userName', $id);
+        $userProfile->fName= $request['fName'];
+        $userProfile->lName= $request['lName'];
+        $userProfile->profileSummary= $request['profileSummary'];
+        $userProfile->city= $request['city'];
+        $userProfile->state= $request['state'];
+        $userProfile->country= $request['country'];
+        $userProfile->profileImg= $request['profileImg'];
+        $userProfile->update(\Request::all());
+        return redirect('/home');
+
     }
 
     /**

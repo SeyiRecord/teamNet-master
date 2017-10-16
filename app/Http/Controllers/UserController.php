@@ -87,11 +87,18 @@ class UserController extends Controller
     }
 
     public function userType(Request $request) {
-        $users = User::where('userName', \Auth::user()->userName)->get();
-        $user = $users[0];
-        $user->userType = $request->userType;
-        $user->save();
-        return redirect('userprofiles/createuserprofile');
+        //dd($request);
+            $users = User::where('userName', \Auth::user()->userName)->get();
+            $user = $users[0];
+            $user->userType = $request->userType;
+            $user->save();
+        if($request->userType != 'Organization') {
+            return redirect('userprofiles/createuserprofile');
+        } else {
+            return redirect('orgprofiles/createorgprofile'); // give the url where you want to get redirection to
+        }
+
+        
         
     }
 }

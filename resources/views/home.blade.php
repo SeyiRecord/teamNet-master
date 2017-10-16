@@ -15,7 +15,7 @@
                     @endif
 
                     You are logged in as <strong>{{ Auth::user()->userName }}</strong>! <br>
-                    <h4><a href = "/userprofiles/edituserprofile/{{$userProfile->id}}" target="_blank">Edit Profile</a> <br></h4
+                    
                     <h4><a href = "/createresearch">Create Research</a> </h4>
                     <h4><a href = "/researches">List Research</a> <br></h4
                 </div>

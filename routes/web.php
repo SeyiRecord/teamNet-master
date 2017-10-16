@@ -28,8 +28,11 @@ Route::get('/userprofiles/edituserprofile/{id}', 'UserprofileController@edit');
 Route::get('/userprofiles/showuser/{id}', 'UserprofileController@show');
 Route::post('/userprofiles/createuserprofile', 'UserprofileController@store');
 Route::post('userType','UserController@userType')->name('userType');
-// Route::resource('userprofile','UserprofileController');
 Route::resource('userprofiles','UserprofileController');
+
+
+Route::get('/orgprofiles/createorgprofile', 'OrgprofileController@create');
+Route::resource('orgprofiles','OrgprofileController');
 
 // Route::get('/researches', 'ResearchController@index');
 Route::get('/createresearch', 'ResearchController@create');
