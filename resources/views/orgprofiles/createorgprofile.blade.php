@@ -5,169 +5,167 @@
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
-                <div class="panel-heading"><H2>{{ Auth::user()->userName }}</H2>Create Profile Dashboard</div>
+                <div class="panel-heading"><H2>{{ Auth::user()->userName }}</H2>Create Organization Profile</div>
 
                 <div class="panel-body">
-                        {{ csrf_field() }}
-                        {!! Form::open(['url' => 'userprofiles']) !!}
+                    {!! Form::open(['url' => 'orgprofiles']) !!}
+                    {{ csrf_field() }}
 
-                        <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
-                            <label for="name" class="col-md-4 control-label">Name</label>
-                            <div class="col-md-6">
-                                <input id="name" type="text" class="form-control" name="name" value="{{ old('name') }}" required autofocus>
-
-                                @if ($errors->has('name'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('name') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
+                        <div class="row">                    
+                        <div class="col-md-6 ">
+                            {!! Form::label('name', 'Organization Name', ['class' => 'control-label']) !!}
+                            {!! Form::text('name', old('name'), ['class' => 'form-control', 'placeholder' => '']) !!}
+                            <p class="help-block"></p>
+                            @if($errors->has('name'))
+                                <p class="help-block">
+                                    {{ $errors->first('name') }}
+                                </p>
+                            @endif
                         </div>
-                        
-                        <div class="form-group{{ $errors->has('motto') ? ' has-error' : '' }}">
-                            <label for="motto" class="col-md-4 control-label">Motto</label>
-                            <div class="col-md-6">
-                                <input id="motto" type="text" class="form-control" name="motto" value="{{ old('motto') }}" required autofocus>
+                    </div>
 
-                                @if ($errors->has('motto'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('motto') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
+                    <div class="row">                    
+                        <div class="col-md-6">
+                            {!! Form::label('motto', 'Motto', ['class' => 'control-label']) !!}
+                            {!! Form::textarea('motto', old('motto'), ['class' => 'form-control', 'placeholder' => '']) !!}
+                            <p class="help-block"></p>
+                            @if($errors->has('motto'))
+                                <p class="help-block">
+                                    {{ $errors->first('motto') }}
+                                </p>
+                            @endif
                         </div>
+                    </div>
 
-                       <div class="form-group{{ $errors->has('vision') ? ' has-error' : '' }}">
-                            <label for="vision" class="col-md-4 control-label">Vision</label>
-                            <div class="col-md-6">
-                                <textarea rows="4" cols="50" class="form-control" name="vision" value="{{ old('vision') }}" required autofocus> </textarea>
-
-                                @if ($errors->has('vision'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('vision') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
+                    <div class="row">                    
+                        <div class="col-md-6">
+                            {!! Form::label('vision', 'Vision', ['class' => 'control-label']) !!}
+                            {!! Form::textarea('vision', old('vision'), ['class' => 'form-control', 'placeholder' => '']) !!}
+                            <p class="help-block"></p>
+                            @if($errors->has('vision'))
+                                <p class="help-block">
+                                    {{ $errors->first('vision') }}
+                                </p>
+                            @endif
                         </div>
+                    </div>
 
-                        <div class="form-group{{ $errors->has('details') ? ' has-error' : '' }}">
-                            <label for="details" class="col-md-4 control-label">Details</label>
-                            <div class="col-md-6">
-                                <textarea rows="4" cols="50" class="form-control" name="details" value="{{ old('details') }}" required autofocus> </textarea>
-
-                                @if ($errors->has('details'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('details') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
+                    <div class="row">                    
+                        <div class="col-md-6">
+                            {!! Form::label('details', 'Organization Details', ['class' => 'control-label']) !!}
+                            {!! Form::textarea('details', old('details'), ['class' => 'form-control', 'placeholder' => '']) !!}
+                            <p class="help-block"></p>
+                            @if($errors->has('details'))
+                                <p class="help-block">
+                                    {{ $errors->first('details') }}
+                                </p>
+                            @endif
                         </div>
+                    </div>
 
-                        <div class="form-group{{ $errors->has('industry') ? ' has-error' : '' }}">
-                            <label for="industry" class="col-md-4 control-label">Industry</label>
-                            <div class="col-md-6">
-                                <textarea rows="4" cols="50" class="form-control" name="industry" value="{{ old('industry') }}" required autofocus> </textarea>
-
-                                @if ($errors->has('industry'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('industry') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
+                    <div class="row">                    
+                        <div class="col-md-6">
+                            {!! Form::label('industry', 'Industry', ['class' => 'control-label']) !!}
+                            {!! Form::text('industry', old('industry'), ['class' => 'form-control', 'placeholder' => '']) !!}
+                            <p class="help-block"></p>
+                            @if($errors->has('industry'))
+                                <p class="help-block">
+                                    {{ $errors->first('industry') }}
+                                </p>
+                            @endif
                         </div>
+                    </div>
 
-                        <div class="form-group{{ $errors->has('location') ? ' has-error' : '' }}">
-                            <label for="location" class="col-md-4 control-label">Location</label>
-                            <div class="col-md-6">
-                                <textarea rows="4" cols="50" class="form-control" name="location" value="{{ old('location') }}" required autofocus> </textarea>
-
-                                @if ($errors->has('location'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('location') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
+                    <div class="row">                    
+                        <div class="col-md-6">
+                            {!! Form::label('location', 'Location', ['class' => 'control-label']) !!}
+                            {!! Form::text('location', old('location'), ['class' => 'form-control', 'placeholder' => '']) !!}
+                            <p class="help-block"></p>
+                            @if($errors->has('location'))
+                                <p class="help-block">
+                                    {{ $errors->first('location') }}
+                                </p>
+                            @endif
                         </div>
-                        
-                                                
-                        <div class="form-group{{ $errors->has('city') ? ' has-error' : '' }}">
-                            <label for="city" class="col-md-4 control-label">City</label>
-                            <div class="col-md-6">
-                                <input id="city" type="text" class="form-control" name="city" value="{{ old('city') }}" required autofocus>
+                    </div>
 
-                                @if ($errors->has('city'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('city') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
+                     <div class="row">                    
+                        <div class="col-md-6">
+                            {!! Form::label('city', 'City', ['class' => 'control-label']) !!}
+                            {!! Form::text('city', old('city'), ['class' => 'form-control', 'placeholder' => '']) !!}
+                            <p class="help-block"></p>
+                            @if($errors->has('city'))
+                                <p class="help-block">
+                                    {{ $errors->first('city') }}
+                                </p>
+                            @endif
                         </div>
-                        
-                        <div class="form-group{{ $errors->has('state') ? ' has-error' : '' }}">
-                            <label for="state" class="col-md-4 control-label">State</label>
-                            <div class="col-md-6">
-                                <input id="state" type="text" class="form-control" name="state" value="{{ old('state') }}" required autofocus>
+                    </div>
 
-                                @if ($errors->has('state'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('state') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
+                    <div class="row">                    
+                        <div class="col-md-6">
+                            {!! Form::label('state', 'State', ['class' => 'control-label']) !!}
+                            {!! Form::text('state', old('state'), ['class' => 'form-control', 'placeholder' => '']) !!}
+                            <p class="help-block"></p>
+                            @if($errors->has('state'))
+                                <p class="help-block">
+                                    {{ $errors->first('state') }}
+                                </p>
+                            @endif
                         </div>
-                        
-                        <div class="form-group{{ $errors->has('country') ? ' has-error' : '' }}">
-                            <label for="country" class="col-md-4 control-label">Country</label>
-                            <div class="col-md-6">
-                                <input id="country" type="text" class="form-control" name="country" value="{{ old('country') }}" required autofocus>
+                    </div>
 
-                                @if ($errors->has('country'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('country') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
+                    <div class="row">                    
+                        <div class="col-md-6">
+                            {!! Form::label('country', 'Country', ['class' => 'control-label']) !!}
+                            {!! Form::text('country', old('country'), ['class' => 'form-control', 'placeholder' => '']) !!}
+                            <p class="help-block"></p>
+                            @if($errors->has('country'))
+                                <p class="help-block">
+                                    {{ $errors->first('country') }}
+                                </p>
+                            @endif
                         </div>
+                    </div>
 
-                        <div class="form-group{{ $errors->has('zipcode') ? ' has-error' : '' }}">
-                            <label for="zipcode" class="col-md-4 control-label">ZipCode</label>
-                            <div class="col-md-6">
-                                <input id="zipcode" type="text" class="form-control" name="zipcode" value="{{ old('zipcode') }}" required autofocus>
-
-                                @if ($errors->has('zipcode'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('zipcode') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
+                    <div class="row">                    
+                        <div class="col-md-6">
+                            {!! Form::label('zipCode', 'Zip Code', ['class' => 'control-label']) !!}
+                            {!! Form::text('zipCode', old('zipCode'), ['class' => 'form-control', 'placeholder' => '']) !!}
+                            <p class="help-block"></p>
+                            @if($errors->has('zipCode'))
+                                <p class="help-block">
+                                    {{ $errors->first('zipCode') }}
+                                </p>
+                            @endif
                         </div>
+                    </div>
 
-                        <div class="form-group{{ $errors->has('webAddress') ? ' has-error' : '' }}">
-                            <label for="webAddress" class="col-md-4 control-label">Web Address</label>
-
-                            <div class="col-md-6">
-                                <textarea rows="4" cols="50" class="form-control" name="webAddress" value="{{ old('webAddress') }}" required autofocus> </textarea>
-
-                                @if ($errors->has('webAddress'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('webAddress') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
+                    <div class="row">                    
+                        <div class="col-md-6">
+                            {!! Form::label('webAddress', 'Website', ['class' => 'control-label']) !!}
+                            {!! Form::text('webAddress', old('webAddress'), ['class' => 'form-control', 'placeholder' => '']) !!}
+                            <p class="help-block"></p>
+                            @if($errors->has('webAddress'))
+                                <p class="help-block">
+                                    {{ $errors->first('webAddress') }}
+                                </p>
+                            @endif
                         </div>
-                        
-                        <div class="form-group{{ $errors->has('logo') ? ' has-error' : '' }}">
-                            <label for="logo" class="col-md-4 control-label">Company Logo</label>
-                            <div class="col-md-6">
-                                <input id="logo" type="file" name="logo" value="{{ old('logo') }}" required autofocus>
+                    </div>
 
-                                @if ($errors->has('logo'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('logo') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
+                    <div class="row">                    
+                        <div class="col-md-6">
+                            {!! Form::label('logo', 'Logo', ['class' => 'control-label']) !!}
+                            {!! Form::file('logo', old('logo'), ['class' => 'form-control', 'placeholder' => '']) !!}
+                            <p class="help-block"></p>
+                            @if($errors->has('logo'))
+                                <p class="help-block">
+                                    {{ $errors->first('logo') }}
+                                </p>
+                            @endif
                         </div>
+                    </div>
 
 
                         <div class="form-group">

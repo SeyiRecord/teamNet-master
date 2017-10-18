@@ -6,12 +6,12 @@
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
 
-                <div class="panel-heading"><H2>User Dashboard</H2></div>
-                <div class="panel-body">
-                    {{ csrf_field() }}
-                    {!! Form::model($userprofile,['method' => 'PUT', 'route' => ['userprofiles.update', $userprofile->id], 'files' => true]) !!}
+                <div class="panel-heading"><H2></H2>Show Organization Profile Dashboard</div>
+                    <div class="panel-body">
+                        {!! Form::model($orgprofile, ['method' => 'PUT', 'route' => ['orgprofiles.update', $orgprofile->id], 'files' => true]) !!}
+                        {{ csrf_field() }}
 
-                    <div class="row">                    
+                       <div class="row">                    
                         <div class="col-md-6 ">
                             {!! Form::label('fName', 'First Name', ['class' => 'control-label']) !!}
                             {!! Form::text('fName', old('fName'), ['class' => 'form-control', 'placeholder' => '', 'disabled'=>'disabled','disabled'=>'disabled']) !!}

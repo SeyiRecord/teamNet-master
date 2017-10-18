@@ -30,7 +30,7 @@
 
                     <!-- Branding Image -->
                     <a class="navbar-brand" href="{{ url('/') }}">
-                        {{ config('app.name', 'TeamNet') }}
+                        TeamNet
                     </a>
                 </div>
 

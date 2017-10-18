@@ -34,12 +34,6 @@ class ResearchController extends Controller
         $users = Auth::user()->userName; 
         return view('researches.createresearch');
     }
-    /*
-    public function save(Request $requestSave)
-    {
-        $this->store($requestSave);
-        return redirect()->route('researches.index')->with('message', 'Research created Successfully');
-    }*/
 
     /**
      * Store a newly created resource in storage.
@@ -123,8 +117,8 @@ class ResearchController extends Controller
             'city' => $research->city,
             'state' => $research->state,
             'country' => $research->country,
-            'zipCode' => $research->zipCode,]
-         );
+            'zipCode' => $research->zipCode,
+            ]);
         $research->update($request->all());
         return redirect('researches');
     }

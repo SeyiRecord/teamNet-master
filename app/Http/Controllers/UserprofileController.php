@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Userprofile;
 use Auth;
+use App\User;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Input;
 
 class UserprofileController extends Controller
 {
@@ -78,7 +80,7 @@ class UserprofileController extends Controller
     {
         //
         //
-        $user = Userprofile::find($id);
+        $userprofile = Userprofile::find($id);
         return view('userprofiles.edituserprofile', compact('user'));
     }
 
@@ -91,22 +93,28 @@ class UserprofileController extends Controller
      */
     public function update(Request $request, $id)
     {
-        
-        unset($request['_method']);
-        unset($request['_token']);
+        if (Input::get('store')) {
+            $this->updateRecord($userprofile, $id);
+            return redirect()->route('/home')->with('message', 'Profile Saved Successfully');
+        }
+    }
 
-        $userProfile = Userprofile::where('userName', $id);
-        $userProfile->fName= $request['fName'];
-        $userProfile->lName= $request['lName'];
-        $userProfile->profileSummary= $request['profileSummary'];
-        $userProfile->city= $request['city'];
-        $userProfile->state= $request['state'];
-        $userProfile->country= $request['country'];
-        $userProfile->profileImg= $request['profileImg'];
+    public function updateRecord(Request $request, $id)
+    {
+        $userProfile = Userprofile::find($id);
+        \DB::table('userprofiles')->where('id', $Userprofile->id)->update([
+            'fName' => $userProfile->fName,
+            'lName' => $userProfile->lName,
+            'profileSummary' => $userProfile->profileSummary,
+            'city' => $userProfile->city,
+            'state' => $userProfile->state,
+            'country' => $userProfile->country,
+            'profileImg' => $userProfile->profileImg,
+            ]);
         $userProfile->update(\Request::all());
         return redirect('/home');
-
     }
+
 
     /**
      * Remove the specified resource from storage.

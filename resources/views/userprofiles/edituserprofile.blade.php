@@ -8,7 +8,9 @@
                 <div class="panel-heading"><H2>{{ Auth::user()->userName }}</H2>Edit Profile Dashboard</div>
 
                 <div class="panel-body">
-                    {!! Form::model($user, ['method' => 'PUT', 'action' => ['UserprofileController@update', $user->userName]]) !!}
+                    @if(Auth::user()->userName)
+                    
+                    {!! Form::model($userprofile, ['method' => 'PUT', 'action' => ['UserprofileController@update', $user->userName]]) !!}
                     {{ csrf_field() }}
 
                     <div class="row">                    
@@ -110,6 +112,7 @@
                             </div>
                         </div>
                     {!! Form::close() !!}
+                    @endif
                 </div>
             </div>
         </div>

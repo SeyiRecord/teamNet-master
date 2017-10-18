@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Orgprofile;
 use Auth;
+use App\User;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Input;
+
 
 class OrgprofileController extends Controller
 {
@@ -42,7 +45,7 @@ class OrgprofileController extends Controller
     {
         //
         $orgProfile = new orgProfile();
-        $orgProfile->orgName = Auth::org()->orgName ;
+        $orgProfile->userName = Auth::user()->userName ;
         $orgProfile->name= $request['name'];
         $orgProfile->motto= $request['motto'];
         $orgProfile->vision= $request['vision'];
@@ -69,6 +72,8 @@ class OrgprofileController extends Controller
     public function show($id)
     {
         //
+        $orgprofile = Orgprofile::find($id);
+        return view('orgprofiles.showorg', compact('orgprofile'));
     }
 
     /**
@@ -80,7 +85,8 @@ class OrgprofileController extends Controller
     public function edit($id)
     {
         //
-        return view('orgprofiles/editorgprofile');
+        $orgprofile = Orgprofile::find($id);
+        return view('orgprofiles/editorgprofile', compact('orgprofile'));
     }
 
     /**
@@ -93,6 +99,30 @@ class OrgprofileController extends Controller
     public function update(Request $request, $id)
     {
         //
+        if (Input::get('store')) {
+            $this->updateRecord($orgprofile, $id);
+            return redirect()->route('/home')->with('message', 'Profile Saved Successfully');
+        }
+    }
+
+    public function updateRecord(Request $request, $id)
+    {
+        $orgProfile = OrgProfile::find($id);
+        \DB::table('orgprofiles')->where('id', $orgProfile->id)->update([
+            'name' => $orgProfile->name,
+            'motto' => $orgProfile->motto,
+            'vision' => $orgProfile->vision,
+            'details' => $orgProfile->details,
+            'industry' => $orgProfile->industry,
+            'location' => $orgProfile->location,
+            'city' => $orgProfile->city,
+            'state' => $orgProfile->state,
+            'country' => $orgProfile->country,
+            'zipCode' => $orgProfile->zipCode,
+            'webAddress' => $orgProfile->webAddress,
+            'logo' => $orgProfile->logo,
+            ]);
+
     }
 
     /**

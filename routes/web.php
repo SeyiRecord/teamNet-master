@@ -34,7 +34,6 @@ Route::resource('userprofiles','UserprofileController');
 Route::get('/orgprofiles/createorgprofile', 'OrgprofileController@create');
 Route::resource('orgprofiles','OrgprofileController');
 
-// Route::get('/researches', 'ResearchController@index');
 Route::get('/createresearch', 'ResearchController@create');
 Route::get('/researches/showresearch/{id}', 'ResearchController@show');
 Route::get('/researches/editresearch/{id}', 'ResearchController@edit');
