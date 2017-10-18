@@ -7,7 +7,7 @@
             <div class="panel panel-default">
                 <div class="panel-heading"><H2>{{ Auth::user()->userName }}</H2><h1>Profile Page</h1></div>
                 <div class="panel-body">
-                    <table class="table table-striped table-bordered table-hover">>
+                    <table class="table table-striped table-bordered table-hover">
                         <thead>
                             <tr class="bg-info">
                                 <th>User Name</th>
@@ -20,15 +20,15 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach($userprofiles as $userprofile)
+                            @foreach($userProfiles as $userprofile)
                             <tr>
-                                <td>{{ $profile->id }}</td>
-                                <td>{{ $profile->fName }}</td>
-                                <td>{{ $profile->lName }}</td>
-                                <td>{{ $profile->profileSummary }}</td>
-                                <td>{{ $profile->city }}</td>
-                                <td>{{ $profile->state }}</td>
-                                <td>{{ $profile->country}}</td>
+                                <td>{{ $userprofile->id }}</td>
+                                <td>{{ $userprofile->fName }}</td>
+                                <td>{{ $userprofile->lName }}</td>
+                                <td>{{ $userprofile->profileSummary }}</td>
+                                <td>{{ $userprofile->city }}</td>
+                                <td>{{ $userprofile->state }}</td>
+                                <td>{{ $userprofile->country}}</td>
                             </tr> 
                             @endforeach
                         </tbody>

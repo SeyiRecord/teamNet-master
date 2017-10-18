@@ -8,7 +8,7 @@
                 <div class="panel-heading"><H2>{{ Auth::user()->userName }}</H2>Edit Profile Dashboard</div>
 
                 <div class="panel-body">
-                    {!! Form::model($orgprofile, ['method' => 'PUT', 'action' => ['orgprofileController@update', $user->userName]]) !!}
+                    {!! Form::model($orgprofile,['method' => 'PUT', 'route' => ['orgprofiles.update', $orgprofile->id], 'files' => true,'novalidate' => 'novalidate']) !!}
                     {{ csrf_field() }}
 
                     <div class="row">                    
@@ -65,7 +65,7 @@
 
                     <div class="row">                    
                         <div class="col-md-6">
-                            {!! Form::label('industry', 'ip Code', ['class' => 'control-label']) !!}
+                            {!! Form::label('industry', 'Industry', ['class' => 'control-label']) !!}
                             {!! Form::text('industry', old('industry'), ['class' => 'form-control', 'placeholder' => '']) !!}
                             <p class="help-block"></p>
                             @if($errors->has('industry'))

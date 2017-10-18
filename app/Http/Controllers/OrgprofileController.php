@@ -96,16 +96,14 @@ class OrgprofileController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update($id)
     {
         //
-        if (Input::get('store')) {
-            $this->updateRecord($orgprofile, $id);
-            return redirect()->route('/home')->with('message', 'Profile Saved Successfully');
-        }
+            $this->updateRecord($id);
+            return redirect()->route('orghome')->with('message', 'Profile Saved Successfully');
     }
 
-    public function updateRecord(Request $request, $id)
+    public function updateRecord($id)
     {
         $orgProfile = OrgProfile::find($id);
         \DB::table('orgprofiles')->where('id', $orgProfile->id)->update([
@@ -122,6 +120,8 @@ class OrgprofileController extends Controller
             'webAddress' => $orgProfile->webAddress,
             'logo' => $orgProfile->logo,
             ]);
+        $orgProfile->update(\Request::all());
+        return redirect('orghome');
 
     }
 

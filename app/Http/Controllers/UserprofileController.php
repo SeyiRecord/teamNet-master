@@ -19,7 +19,7 @@ class UserprofileController extends Controller
     {
         //
         $userProfiles = UserProfile::all();
-        return view('userprofiles.index',compact('userprofiles'));
+        return view('userprofiles.index',compact('userProfiles'));
     }
 
     /**
@@ -81,7 +81,7 @@ class UserprofileController extends Controller
         //
         //
         $userprofile = Userprofile::find($id);
-        return view('userprofiles.edituserprofile', compact('user'));
+        return view('userprofiles.edituserprofile', compact('userprofile'));
     }
 
     /**
@@ -91,18 +91,16 @@ class UserprofileController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update($id)
     {
-        if (Input::get('store')) {
-            $this->updateRecord($userprofile, $id);
-            return redirect()->route('/home')->with('message', 'Profile Saved Successfully');
-        }
+            $this->updateRecord($id);
+            return redirect()->route('home')->with('message', 'Profile Saved Successfully');
     }
 
-    public function updateRecord(Request $request, $id)
+    public function updateRecord($id)
     {
         $userProfile = Userprofile::find($id);
-        \DB::table('userprofiles')->where('id', $Userprofile->id)->update([
+        \DB::table('userprofiles')->where('id', $userProfile->id)->update([
             'fName' => $userProfile->fName,
             'lName' => $userProfile->lName,
             'profileSummary' => $userProfile->profileSummary,
@@ -112,7 +110,7 @@ class UserprofileController extends Controller
             'profileImg' => $userProfile->profileImg,
             ]);
         $userProfile->update(\Request::all());
-        return redirect('/home');
+        return redirect('home');
     }
 
 

@@ -18,8 +18,8 @@
 
                     <!-- Add View User Link -->
                     
-                    <h4><a href = "/userprofiles/showuser/{{$id}}" target="_blank">View User Profile</a> </h4>
-                    <h4><a href = "/userprofiles/edituserprofile/{{$id}}" target="_blank">Edit User Profile</a> </h4>
+                    <h4><a href = "/orgprofiles/showorg/{{$id}}" target="_blank">View Organization Profile</a> </h4>
+                    <h4><a href = "/orgprofiles/editorgprofile/{{$id}}" target="_blank">Edit Organization Profile</a> </h4>
                     <h4><a href = "/createresearch">Create Research</a> </h4>
                     <h4><a href = "/researches">List Research</a> <br></h4>
                 </div>

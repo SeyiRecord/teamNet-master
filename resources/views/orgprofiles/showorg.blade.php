@@ -13,12 +13,12 @@
 
                        <div class="row">                    
                         <div class="col-md-6 ">
-                            {!! Form::label('fName', 'First Name', ['class' => 'control-label']) !!}
-                            {!! Form::text('fName', old('fName'), ['class' => 'form-control', 'placeholder' => '', 'disabled'=>'disabled','disabled'=>'disabled']) !!}
+                            {!! Form::label('name', 'Organization Name', ['class' => 'control-label']) !!}
+                            {!! Form::text('name', old('name'), ['class' => 'form-control', 'placeholder' => '', 'disabled'=>'disabled']) !!}
                             <p class="help-block"></p>
-                            @if($errors->has('fName'))
-                                <p class="help-block">,'disabled'=>'disabled'
-                                    {{ $errors->first('fName') }}
+                            @if($errors->has('name'))
+                                <p class="help-block">
+                                    {{ $errors->first('name') }}
                                 </p>
                             @endif
                         </div>
@@ -26,12 +26,12 @@
 
                     <div class="row">                    
                         <div class="col-md-6">
-                            {!! Form::label('lName', 'Last Name', ['class' => 'control-label']) !!}
-                            {!! Form::text('lName', old('lName'), ['class' => 'form-control', 'placeholder' => '', 'disabled'=>'disabled']) !!}
+                            {!! Form::label('motto', 'Motto', ['class' => 'control-label']) !!}
+                            {!! Form::text('motto', old('motto'), ['class' => 'form-control', 'placeholder' => '', 'disabled'=>'disabled']) !!}
                             <p class="help-block"></p>
-                            @if($errors->has('lName'))
+                            @if($errors->has('motto'))
                                 <p class="help-block">
-                                    {{ $errors->first('lName') }}
+                                    {{ $errors->first('motto') }}
                                 </p>
                             @endif
                         </div>
@@ -39,12 +39,51 @@
 
                     <div class="row">                    
                         <div class="col-md-6">
-                            {!! Form::label('profileSummary', 'Profile Summary', ['class' => 'control-label']) !!}
-                            {!! Form::textarea('profileSummary', old('profileSummary'), ['class' => 'form-control', 'placeholder' => '', 'disabled'=>'disabled']) !!}
+                            {!! Form::label('vision', 'vision', ['class' => 'control-label']) !!}
+                            {!! Form::textarea('vision', old('vision'), ['class' => 'form-control', 'placeholder' => '', 'disabled'=>'disabled']) !!}
                             <p class="help-block"></p>
-                            @if($errors->has('profileSummary'))
+                            @if($errors->has('vision'))
                                 <p class="help-block">
-                                    {{ $errors->first('profileSummary') }}
+                                    {{ $errors->first('vision') }}
+                                </p>
+                            @endif
+                        </div>
+                    </div>
+
+                    <div class="row">                    
+                        <div class="col-md-6">
+                            {!! Form::label('details', 'Details', ['class' => 'control-label']) !!}
+                            {!! Form::textarea('details', old('details'), ['class' => 'form-control', 'placeholder' => '', 'disabled'=>'disabled']) !!}
+                            <p class="help-block"></p>
+                            @if($errors->has('details'))
+                                <p class="help-block">
+                                    {{ $errors->first('details') }}
+                                </p>
+                            @endif
+                        </div>
+                    </div>
+
+                    <div class="row">                    
+                        <div class="col-md-6">
+                            {!! Form::label('industry', 'Industry', ['class' => 'control-label']) !!}
+                            {!! Form::text('industry', old('industry'), ['class' => 'form-control', 'placeholder' => '', 'disabled'=>'disabled']) !!}
+                            <p class="help-block"></p>
+                            @if($errors->has('industry'))
+                                <p class="help-block">
+                                    {{ $errors->first('industry') }}
+                                </p>
+                            @endif
+                        </div>
+                    </div>
+
+                    <div class="row">                    
+                        <div class="col-md-6">
+                            {!! Form::label('location', 'Location', ['class' => 'control-label']) !!}
+                            {!! Form::text('location', old('location'), ['class' => 'form-control', 'placeholder' => '', 'disabled'=>'disabled']) !!}
+                            <p class="help-block"></p>
+                            @if($errors->has('location'))
+                                <p class="help-block">
+                                    {{ $errors->first('location') }}
                                 </p>
                             @endif
                         </div>
@@ -88,6 +127,46 @@
                             @endif
                         </div>
                     </div>
+
+                    <div class="row">                    
+                        <div class="col-md-6">
+                            {!! Form::label('zipCode', 'Zip Code', ['class' => 'control-label']) !!}
+                            {!! Form::text('zipCode', old('zipCode'), ['class' => 'form-control', 'placeholder' => '', 'disabled'=>'disabled']) !!}
+                            <p class="help-block"></p>
+                            @if($errors->has('zipCode'))
+                                <p class="help-block">
+                                    {{ $errors->first('zipCode') }}
+                                </p>
+                            @endif
+                        </div>
+                    </div>
+
+                    <div class="row">                    
+                        <div class="col-md-6">
+                            {!! Form::label('webAddress', 'webAddress', ['class' => 'control-label']) !!}
+                            {!! Form::text('webAddress', old('webAddress'), ['class' => 'form-control', 'placeholder' => '', 'disabled'=>'disabled']) !!}
+                            <p class="help-block"></p>
+                            @if($errors->has('webAddress'))
+                                <p class="help-block">
+                                    {{ $errors->first('webAddress') }}
+                                </p>
+                            @endif
+                        </div>
+                    </div>
+
+                    <div class="row">                    
+                        <div class="col-md-6">
+                            {!! Form::label('logo', 'Logo', ['class' => 'control-label']) !!}
+                            {!! Form::file('logo', old('logo'), ['class' => 'form-control', 'placeholder' => '', 'disabled'=>'disabled']) !!}
+                            <p class="help-block"></p>
+                            @if($errors->has('logo'))
+                                <p class="help-block">
+                                    {{ $errors->first('logo') }}
+                                </p>
+                            @endif
+                        </div>
+                    </div>
+
 
                     </form>
                     {!! Form::close() !!}

@@ -10,7 +10,7 @@
                 <div class="panel-body">
                     @if(Auth::user()->userName)
                     
-                    {!! Form::model($userprofile, ['method' => 'PUT', 'action' => ['UserprofileController@update', $user->userName]]) !!}
+                    {!! Form::model($userprofile,['method' => 'PUT', 'route' => ['userprofiles.update', $userprofile->id], 'files' => true,'novalidate' => 'novalidate']) !!}
                     {{ csrf_field() }}
 
                     <div class="row">                    

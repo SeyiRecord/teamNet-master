@@ -17,6 +17,7 @@ Route::get('/', function () {
 
 Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/orghome', 'OrghomeController@index')->name('orghome');
 Route::get('/usertype', function () {return view('usertype');});
 
 Route::get('/requestpassword', function () {return view('requestPassword');});
@@ -32,6 +33,8 @@ Route::resource('userprofiles','UserprofileController');
 
 
 Route::get('/orgprofiles/createorgprofile', 'OrgprofileController@create');
+Route::get('/orgprofiles/editorgprofile/{id}', 'OrgprofileController@edit');
+Route::get('/orgprofiles/showorg/{id}', 'OrgprofileController@show');
 Route::resource('orgprofiles','OrgprofileController');
 
 Route::get('/createresearch', 'ResearchController@create');

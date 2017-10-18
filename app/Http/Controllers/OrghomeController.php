@@ -1,13 +1,13 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Userprofile;
+use App\Orgprofile;
 use Auth;
 use Illuminate\Support\Facades\DB;
 
 use Illuminate\Http\Request;
 
-class HomeController extends Controller
+class OrghomeController extends Controller
 {
     /**
      * Create a new controller instance.
@@ -27,8 +27,8 @@ class HomeController extends Controller
     public function index()
     {
         $user = Auth::user()->userName;
-        $id = DB::table('userprofiles')->where('userName', '=', $user)->value('id');
-        $userProfile = userprofile::find(1);
-        return view('home', compact('id'));
+        $id = DB::table('orgprofiles')->where('userName', '=', $user)->value('id');
+        $orgProfile = orgprofile::find(1);
+        return view('orghome', compact('id'));
     }
 }
