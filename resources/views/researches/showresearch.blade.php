@@ -11,9 +11,10 @@
                         {{ csrf_field() }}
                         {!! Form::model($research,['method' => 'PUT', 'route' => ['researches.update', $research->id], 'files' => true,]) !!}
 
-                        <div class="row">
+                        <div class="panel-body">
+                            <div class="row">
                             <div class="col-md-8 form-group">
-                                {!! Form::label('topic', 'topic', ['class' => 'col-sm-4 control-label']) !!}
+                                {!! Form::label('topic', 'Topic', ['class' => 'col-sm-4 control-label']) !!}
                                 <div class="col-sm-6 ">
                                     {!! Form::text('topic', old('topic'), array('class' => 'form-control','id' => 'topic','required' => 'required','disabled'=>'disabled'))!!}
                                     <p class="help-block"></p>
@@ -43,7 +44,7 @@
 
                         <div class="row">
                             <div class="col-md-8 form-group">
-                                {!! Form::label('startDate', 'startDate', ['class' => 'col-sm-4 control-label']) !!}
+                                {!! Form::label('startDate', 'Start Date', ['class' => 'col-sm-4 control-label']) !!}
                                 <div class="col-sm-6 ">
                                     {!! Form::text('startDate', old('startDate'), array('class'=>'datepicker form-control', 'id' => 'startDate', 'placeholder'=>'MM/DD/YYYY','required' => 'required','disabled'=>'disabled'))!!}
                                     <p class="help-block"></p>
@@ -58,7 +59,7 @@
 
                         <div class="row">
                             <div class="col-md-8 form-group">
-                                {!! Form::label('endDate', 'endDate', ['class' => 'col-sm-4 control-label']) !!}
+                                {!! Form::label('endDate', 'End Date', ['class' => 'col-sm-4 control-label']) !!}
                                 <div class="col-sm-6 ">
                                     {!! Form::text('endDate', old('endDate'), array('class'=>'datepicker form-control', 'id' => 'endDate', 'placeholder'=>'MM/DD/YYYY','required' => 'required','disabled'=>'disabled'))!!}
                                     <p class="help-block"></p>
@@ -73,7 +74,7 @@
 
                          <div class="row">
                             <div class="col-md-8 form-group">
-                                {!! Form::label('organization', 'organization', ['class' => 'col-sm-4 control-label']) !!}
+                                {!! Form::label('organization', 'Organization', ['class' => 'col-sm-4 control-label']) !!}
                                 <div class="col-sm-6 ">
                                     {!! Form::text('organization', old('organization'), array('class' => 'form-control','id' => 'organization','required' => 'required','disabled'=>'disabled'))!!}
                                     <p class="help-block"></p>
@@ -88,7 +89,7 @@
 
                         <div class="row">
                             <div class="col-md-8 form-group">
-                                {!! Form::label('location', 'location', ['class' => 'col-sm-4 control-label']) !!}
+                                {!! Form::label('location', 'Location', ['class' => 'col-sm-4 control-label']) !!}
                                 <div class="col-sm-6 ">
                                     {!! Form::text('location', old('location'), array('class' => 'form-control','id' => 'location','required' => 'required','disabled'=>'disabled'))!!}
                                     <p class="help-block"></p>
@@ -103,7 +104,7 @@
 
                         <div class="row">
                             <div class="col-md-8 form-group">
-                                {!! Form::label('city', 'city', ['class' => 'col-sm-4 control-label']) !!}
+                                {!! Form::label('city', 'City', ['class' => 'col-sm-4 control-label']) !!}
                                 <div class="col-sm-6 ">
                                     {!! Form::text('city', old('city'), array('class' => 'form-control','id' => 'city','required' => 'required','disabled'=>'disabled'))!!}
                                     <p class="help-block"></p>
@@ -118,7 +119,7 @@
 
                         <div class="row">
                             <div class="col-md-8 form-group">
-                                {!! Form::label('state', 'state', ['class' => 'col-sm-4 control-label']) !!}
+                                {!! Form::label('state', 'State', ['class' => 'col-sm-4 control-label']) !!}
                                 <div class="col-sm-6 ">
                                     {!! Form::text('state', old('state'), array('class' => 'form-control','id' => 'state','required' => 'required','disabled'=>'disabled'))!!}
                                     <p class="help-block"></p>
@@ -133,7 +134,7 @@
 
                         <div class="row">
                             <div class="col-md-8 form-group">
-                                {!! Form::label('country', 'country', ['class' => 'col-sm-4 control-label']) !!}
+                                {!! Form::label('country', 'Country', ['class' => 'col-sm-4 control-label']) !!}
                                 <div class="col-sm-6 ">
                                     {!! Form::text('country', old('country'), array('class' => 'form-control','id' => 'country','required' => 'required','disabled'=>'disabled'))!!}
                                     <p class="help-block"></p>
@@ -145,9 +146,11 @@
                                 </div> 
                             </div>
                         </div>
+                        </div>
 
                     </form>
                     {!! Form::close() !!}
+                    <h4><a href = "/participations/{{$research->id}}">Participate in Research</a> </h4>
                     <h4><a href = "/createresearch">Create New Research</a> </h4>
                     <h4><a href = "/researches">List Researches</a> <br></h4
                 </div>

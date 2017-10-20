@@ -43,6 +43,10 @@ Route::get('/researches/editresearch/{id}', 'ResearchController@edit');
 Route::post('/researches/store', 'ResearchController@store');
 Route::resource('/researches', 'ResearchController');
 
+Route::get('/participations/{id}', 'ParticipationController@save');
+Route::get('/participations/editparticipations/{id}', 'ParticipationController@edit');
+
+
 
 
 

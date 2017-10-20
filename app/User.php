@@ -23,7 +23,7 @@ class User extends Authenticatable
         'userName', 'email', 'password', 'userType',
     ];
 
-    //To Change primary key to userName
+    // To Change primary key to userName
     // Must be changed in vendor\laravel\framework\src\Illuminate\Foundation\Auth : function username()
     protected $primaryKey = 'userName';
     public $incrementing = false;
@@ -47,5 +47,9 @@ class User extends Authenticatable
 
     public function research() {
         return $this->hasMany(Research::class);
+    }
+
+    public function participation(){
+        return $this->hasMany(Participation::class);
     }
 }

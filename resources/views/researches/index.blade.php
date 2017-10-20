@@ -7,12 +7,13 @@
             <div class="panel panel-default">
                 <div class="panel-heading"><H2>{{ Auth::user()->userName }}</H2>Research Page</div>
                 <div class="panel-body">
-                    <h3><a href = "/createresearch">Create Research</a> </h3>
                 
-                    @if(count($researches) > 0)
+                    @if(count($researches) > 1)
                         <strong><h1> List of Researches </h1></strong>
                         <div class="panel-body">
                             <table >
+                                @foreach($researches as $research)
+                                @if($research->ownerID == Auth::user()->userName)
                                 <thead>
                                     <tr>
                                         <th>Topic&emsp;</th>
@@ -27,8 +28,6 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach($researches as $research)
-                                    @if($research->ownerID == Auth::user()->userName)
                                     <tr>
                                         <td><a href="/researches/showresearch/{{$research->id}}" target="_blank">{{$research->topic}}</a>&emsp;</td>
                                         <td>{{$research->startDate}}&emsp;</td>
@@ -40,12 +39,15 @@
                                         <td>{{$research->country}}&emsp;</td>
                                         <td><a href="/researches/editresearch/{{$research->id}}" target="_blank">Edit </a></td>
                                     </tr>
-                                    @endif
-                                    @endforeach
+                                @endif
+                                @endforeach
                                 </tbody>
                             </table>
                         </div>
+                    @else
+                        <p>No research created!</p>
                     @endif
+                    <h3><a href = "/createresearch">Create Research</a> </h3>
                 </div>
             </div>
         </div>

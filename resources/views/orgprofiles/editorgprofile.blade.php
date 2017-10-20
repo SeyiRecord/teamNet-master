@@ -39,7 +39,7 @@
 
                     <div class="row">                    
                         <div class="col-md-6">
-                            {!! Form::label('vision', 'vision', ['class' => 'control-label']) !!}
+                            {!! Form::label('vision', 'Vision', ['class' => 'control-label']) !!}
                             {!! Form::textarea('vision', old('vision'), ['class' => 'form-control', 'placeholder' => '']) !!}
                             <p class="help-block"></p>
                             @if($errors->has('vision'))

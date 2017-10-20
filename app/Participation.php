@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
-class Research extends Model
+class Participation extends Model
 {
     //
     use Notifiable;
@@ -17,15 +17,20 @@ class Research extends Model
      * @var array
      */
     protected $fillable = [
-        'ownerID','topic', 'summary', 'startDate','endDate','organization', 'location', 'city', 'state', 'country','zipCode',
+        'researchID','userName', 'status',
     ];
 
+    /**
+     * The attributes that should be hidden for arrays.
+     *
+     * @var array
+     */
     
     public function user(){
         return $this->belongsTo(User::class);
     }
 
-    public function Participation(){
-        return $this->hasMany(Participation::class);
+    public function research(){
+        return $this->belongsTo(Research::class);
     }
 }
