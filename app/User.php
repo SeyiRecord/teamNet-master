@@ -52,4 +52,8 @@ class User extends Authenticatable
     public function participation(){
         return $this->hasMany(Participation::class);
     }
+
+    public function attachment(){
+        return $this->hasMany(Attachment::class);
+    }
 }

@@ -22,7 +22,7 @@
                         <tbody>
                             @foreach($userProfiles as $userprofile)
                             <tr>
-                                <td>{{ $userprofile->id }}</td>
+                                <td>{{ $userprofile->userName }}</td>
                                 <td>{{ $userprofile->fName }}</td>
                                 <td>{{ $userprofile->lName }}</td>
                                 <td>{{ $userprofile->profileSummary }}</td>

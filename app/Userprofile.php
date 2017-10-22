@@ -20,7 +20,6 @@ class Userprofile extends Model // Y0u should always name the class name with fi
         'fName', 'lName', 'profileSummary', 'city', 'state', 'country', 'profileImg',
     ];
 
-
     protected $table = 'userprofiles';
 
     /**
@@ -32,5 +31,8 @@ class Userprofile extends Model // Y0u should always name the class name with fi
     public function user(){
         return $this->belongsTo(User::class);
     }
-    // $profile->user->userName;
+    
+    public function attachment(){
+        return $this->hasMany(Attachment::class);
+    }
 }

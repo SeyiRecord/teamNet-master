@@ -11,13 +11,23 @@ use Illuminate\Support\Facades\Input;
 class UserprofileController extends Controller
 {
     /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
+    /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
     public function index()
     {
-        //
+        // Should be visible only to admin users
         $userProfiles = UserProfile::all();
         return view('userprofiles.index',compact('userProfiles'));
     }
