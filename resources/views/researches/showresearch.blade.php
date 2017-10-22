@@ -150,7 +150,9 @@
 
                     </form>
                     {!! Form::close() !!}
-                    <h4><a href = "/participations/{{$research->id}}">Participate in Research</a> </h4>
+                    @if($research->ownerID != Auth::user()->userName)
+                        <h4><a href = "/participations/{{$research->id}}">Participate in Research</a> </h4>
+                    @endif
                     <h4><a href = "/createresearch">Create New Research</a> </h4>
                     <h4><a href = "/researches">List Researches</a> <br></h4
                 </div>

@@ -8,7 +8,7 @@
                 <div class="panel-heading"><H2>{{ Auth::user()->userName }}</H2>Research Page</div>
                 <div class="panel-body">
                 
-                    @if(count($researches) > 1)
+                    @if(count($researches) > 0)
                         <strong><h1> List of Researches </h1></strong>
                         <div class="panel-body">
                             <table >
