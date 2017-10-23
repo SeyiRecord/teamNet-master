@@ -28,4 +28,11 @@ class Research extends Model
     public function Participation(){
         return $this->hasMany(Participation::class);
     }
+<<<<<<< HEAD
+=======
+
+    public function attachment(){
+        return $this->hasMany(Attachment::class);
+    }
+>>>>>>> d8d4e8ccf1ebff23f0eb22a06521d28ae42598ea
 }

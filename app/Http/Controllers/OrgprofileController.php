@@ -12,6 +12,19 @@ use Illuminate\Support\Facades\Input;
 class OrgprofileController extends Controller
 {
     /**
+<<<<<<< HEAD
+=======
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+    
+    /**
+>>>>>>> d8d4e8ccf1ebff23f0eb22a06521d28ae42598ea
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response

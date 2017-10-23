@@ -28,8 +28,13 @@ Route::get('/userprofiles/createuserprofile', 'UserprofileController@create');
 Route::get('/userprofiles/edituserprofile/{id}', 'UserprofileController@edit');
 Route::get('/userprofiles/showuser/{id}', 'UserprofileController@show');
 Route::post('/userprofiles/createuserprofile', 'UserprofileController@store');
+<<<<<<< HEAD
 Route::post('userType','UserController@userType')->name('userType');
 Route::resource('userprofiles','UserprofileController');
+=======
+Route::resource('userprofiles','UserprofileController');
+Route::post('userType','UserController@userType')->name('userType');
+>>>>>>> d8d4e8ccf1ebff23f0eb22a06521d28ae42598ea
 
 
 Route::get('/orgprofiles/createorgprofile', 'OrgprofileController@create');

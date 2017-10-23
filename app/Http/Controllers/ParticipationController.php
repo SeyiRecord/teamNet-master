@@ -11,6 +11,19 @@ use Illuminate\Support\Facades\Input;
 class ParticipationController extends Controller
 {
     /**
+<<<<<<< HEAD
+=======
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
+    /**
+>>>>>>> d8d4e8ccf1ebff23f0eb22a06521d28ae42598ea
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
@@ -88,6 +101,11 @@ class ParticipationController extends Controller
     public function edit($id)
     {
         //
+<<<<<<< HEAD
+=======
+        $participation=Participation::find($id);
+        return view('participation.edit', compact('participation'));
+>>>>>>> d8d4e8ccf1ebff23f0eb22a06521d28ae42598ea
     }
 
     /**
@@ -101,6 +119,15 @@ class ParticipationController extends Controller
     {
         //
     }
+<<<<<<< HEAD
+=======
+     public function updateRecord(Request $request, $id){
+        $participation = Participation::find($id);
+        \DB::table('participations')->where('id', $participation->id)->update([
+            
+            ]);
+     }
+>>>>>>> d8d4e8ccf1ebff23f0eb22a06521d28ae42598ea
 
     /**
      * Remove the specified resource from storage.

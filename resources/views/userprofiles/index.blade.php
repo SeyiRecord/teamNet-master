@@ -22,7 +22,11 @@
                         <tbody>
                             @foreach($userProfiles as $userprofile)
                             <tr>
+<<<<<<< HEAD
                                 <td>{{ $userprofile->id }}</td>
+=======
+                                <td>{{ $userprofile->userName }}</td>
+>>>>>>> d8d4e8ccf1ebff23f0eb22a06521d28ae42598ea
                                 <td>{{ $userprofile->fName }}</td>
                                 <td>{{ $userprofile->lName }}</td>
                                 <td>{{ $userprofile->profileSummary }}</td>
