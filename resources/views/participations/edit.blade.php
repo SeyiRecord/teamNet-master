@@ -9,7 +9,7 @@
                 <div class="panel-heading"><H2>Invitation to Participate in Research</H2>
                     <div class="panel-body">
                         {{ csrf_field() }}
-                        {!! Form::model($participate,['method' => 'PUT', 'route' => ['participations.update', $participation->id], 'files' => true,'novalidate' => 'novalidate']) !!}
+                        {!! Form::model($participation,['method' => 'PUT', 'route' => ['participations.update', $participation->id], 'files' => true]) !!}
 
                             <div class="row">
                                 <div class="col-md-8 form-group">
@@ -25,27 +25,39 @@
                                     </div> 
                                 </div>
                             </div>
+
+
                             <div class="row">
                                 <div class="col-md-8 form-group">
-                                    <label>Participation status :</label><br/>
-                                    <label><input checked="checked" name="userType" type="radio" value="pending">
-                                        Pending
-                                    </input></label></br>
-                                    <label><input name="userType" type="radio" value="Approved">
-                                        Approved
-                                    </input></label></br>
-                                    <label><input name="userType" type="radio" value="Decline">
-                                        Decline
-                                    </input></label></br>
+                                    {!! Form::label('userName', 'Requested By', ['class' => 'col-sm-4 control-label']) !!}
+                                    <div class="col-sm-6 ">
+                                        {!! Form::text('userName', old('userName'), array('class' => 'form-control','id' => 'userName','required' => 'required','disabled'=>'disabled'))!!}
+                                        <p class="help-block"></p>
+                                        @if($errors->has('userName'))
+                                            <p class="help-block">
+                                                {{ $errors->first('userName') }}
+                                            </p>
+                                        @endif
+                                    </div> 
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-8 form-group">
+                                    <h3>Participation status</h3>
+                                        {{ Form::label('name', 'Approve') }}
+                                        {{ Form::radio('status', 'Approved') }}<br>
+                                        {{ Form::label('name', 'Decline') }}
+                                        {{ Form::radio('status', 'Decline') }}<br>
                                 </div>
                             </div>
 
                             <div class="row">
                                 <div class="col-sm-12 panel-headinzzzzg">
                                     <label class="col-md-2 col-md-offset-2"></label>
-                                    <div class="btn-bottom ">
-                                        {!! Form::submit('Submit',['class' => 'btn btn-success','name'=> 'store', 'id'=>'submitButton']) !!}
-                                        <a href="{{ URL::previous() }}" class="btn btn-danger" id="cancelButton">Cancel</a>
+                                    <div class="col-md-6 col-md-offset-4"><br>
+                                        <button type="submit" class="btn btn-primary">
+                                            Save
+                                        </button>
                                     </div>
                                     <br>
                                 </div>

@@ -18,10 +18,10 @@ class CreateAttachmentTable extends Migration
             $table->string('name');
             $table->string('ownerID', 32)->nullable();
             // $table->foreign('ownerID')->references('userName')->on('users');
-            $table->interger('userID')->nullable();
-            $table->interger('orgID')->nullable();
-            $table->interger('researchID')->nullable();
-            $table->interger('postID')->nullable();
+            $table->integer('userID')->nullable();
+            $table->integer('orgID')->nullable();
+            $table->integer('researchID')->nullable();
+            $table->integer('postID')->nullable();
             $table->timestamps();
         });
     }

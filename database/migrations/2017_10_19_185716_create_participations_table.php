@@ -15,7 +15,7 @@ class CreateParticipationsTable extends Migration
     {
         Schema::create('participations', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('researchID');
+            $table->integer('researchID')->unsigned();
             $table->foreign('researchID')->references('id')->on('researches');
             $table->string('userName', 32);
             $table->foreign('userName')->references('userName')->on('users');

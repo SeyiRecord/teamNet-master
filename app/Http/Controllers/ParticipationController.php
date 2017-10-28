@@ -11,8 +11,6 @@ use Illuminate\Support\Facades\Input;
 class ParticipationController extends Controller
 {
     /**
-<<<<<<< HEAD
-=======
      * Create a new controller instance.
      *
      * @return void
@@ -23,7 +21,6 @@ class ParticipationController extends Controller
     }
 
     /**
->>>>>>> d8d4e8ccf1ebff23f0eb22a06521d28ae42598ea
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
@@ -70,7 +67,6 @@ class ParticipationController extends Controller
         //
         $users = Auth::user()->userName;
         $status = 'pending';
-
         $participation = new participation();
         $participation->researchID=$id;
         $participation->userName=$users;
@@ -89,7 +85,8 @@ class ParticipationController extends Controller
     public function show($id)
     {
         //
-
+        $participation = Participation::find($id);
+        return view('participations.show', compact('participations'));
     }
 
     /**
@@ -101,11 +98,8 @@ class ParticipationController extends Controller
     public function edit($id)
     {
         //
-<<<<<<< HEAD
-=======
         $participation=Participation::find($id);
-        return view('participation.edit', compact('participation'));
->>>>>>> d8d4e8ccf1ebff23f0eb22a06521d28ae42598ea
+        return view('participations.edit', compact('participation'));
     }
 
     /**
@@ -118,16 +112,19 @@ class ParticipationController extends Controller
     public function update(Request $request, $id)
     {
         //
+        Participation::find($id)->update($request->all());
+        return redirect()->route('researches.index')->with('message', 'User added Successfully');
     }
-<<<<<<< HEAD
-=======
      public function updateRecord(Request $request, $id){
         $participation = Participation::find($id);
         \DB::table('participations')->where('id', $participation->id)->update([
-            
+            'researchID' => $participation->researchID,
+            'userName' => $participation->userName,
+            'status' => $participation->status,
             ]);
+        $participation->update($request->all());
+        return redirect('home');
      }
->>>>>>> d8d4e8ccf1ebff23f0eb22a06521d28ae42598ea
 
     /**
      * Remove the specified resource from storage.
