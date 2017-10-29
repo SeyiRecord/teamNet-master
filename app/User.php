@@ -4,6 +4,7 @@ namespace App;
 
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use App\Role;
 
 class User extends Authenticatable
 {
@@ -24,11 +25,8 @@ class User extends Authenticatable
     ];
 
     // To Change primary key to userName
-<<<<<<< HEAD
     // Must be changed in vendor\laravel\framework\src\Illuminate\Foundation\Auth : function username()
-=======
     // Must be changed in vendor\laravel\framework\src\Illuminate\Foundation\Auth\AuthenticatesUser : function username()
->>>>>>> d8d4e8ccf1ebff23f0eb22a06521d28ae42598ea
     protected $primaryKey = 'userName';
     public $incrementing = false;
 
@@ -56,11 +54,49 @@ class User extends Authenticatable
     public function participation(){
         return $this->hasMany(Participation::class);
     }
-<<<<<<< HEAD
-=======
 
     public function attachment(){
         return $this->hasMany(Attachment::class);
     }
->>>>>>> d8d4e8ccf1ebff23f0eb22a06521d28ae42598ea
+
+    public function roles() {
+        return $this->belongsToMany(Role::class);
+    }
+
+     public function isUser()
+     {
+        return ($this->roles()->count()) ? true : false;
+     }
+
+     public function hasRole($role) {
+        return $this->roles()->pluck("name")->contains($role);
+     }
+
+     private function getIdInArray($array, $term){
+        foreach ($array as $key => $value) {
+            if ($value == $term){
+                return $key;
+            }
+        }        
+        throw new UnexpectedValueException;
+     }
+
+     public function makeUser($title) {
+        $assignedRoles = array();
+        $roles = Role::all()->pluck("name", "id");
+
+        switch ($title){
+            case "superAdmin" :
+                $assignedRoles[] = $this->getIdInArray($roles, 'create');
+            case "admin" :
+                $assignedRoles[] = $this->getIdInArray($roles, 'delete');
+            case "user" :
+                $assignedRoles[] = $this->getIdInArray($roles, 'read');
+                $assignedRoles[] = $this->getIdInArray($roles, 'update');
+            break;
+            default:
+                throw new \Exception("The user does not exist");
+        }
+        $this->roles()->sync($assignedRoles);
+     }
 }

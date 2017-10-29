@@ -29,11 +29,8 @@ class Orgprofile extends Model
     public function user(){
         return $this->belongsTo(User::class);
     }
-<<<<<<< HEAD
-=======
 
     public function attachment(){
         return $this->hasMany(Attachment::class);
     }
->>>>>>> d8d4e8ccf1ebff23f0eb22a06521d28ae42598ea
 }

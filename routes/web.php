@@ -49,6 +49,11 @@ Route::get('/participations/update/{id}', 'ParticipationController@updateRecord'
 Route::resource('participations', 'ParticipationController');
 
 
+Route::group(['middleware' => ['web']], function() {
+	Route::get("roles/create", "RolesController@store");
+});
+
+
 
 /*
 Route::get('/Profile', function () {
