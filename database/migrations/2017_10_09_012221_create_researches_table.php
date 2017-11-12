@@ -27,6 +27,7 @@ class CreateResearchesTable extends Migration
             $table->string('state');
             $table->string('country');
             $table->integer('zipCode')->nullable();
+            $table->string('researchpaper')->nullable();
             $table->timestamps();
         });
     }

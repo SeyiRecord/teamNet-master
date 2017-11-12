@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Research;
 use Auth;
+use App\Research;
 use App\User;
+use App\Attachment;
+use App\Http\Controllers\Traits\FileUploadTrait;
+use App\Http\Controllers\Traits\FormFileUploadTrait;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
@@ -12,8 +15,6 @@ use Illuminate\Support\Facades\Input;
 class ResearchController extends Controller
 {
     /**
-<<<<<<< HEAD
-=======
      * Create a new controller instance.
      *
      * @return void
@@ -24,7 +25,6 @@ class ResearchController extends Controller
     }
     
     /**
->>>>>>> d8d4e8ccf1ebff23f0eb22a06521d28ae42598ea
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
@@ -69,6 +69,9 @@ class ResearchController extends Controller
         $research->state= $request['state'];
         $research->country= $request['country'];
         $research->zipCode= $request['zipCode'];
+        $research->researchpaper = $request['researchpaper'];
+
+        $this-> ResearchesUpload($request);
         $research->save();
         
         return redirect('researches');
@@ -131,6 +134,7 @@ class ResearchController extends Controller
             'state' => $research->state,
             'country' => $research->country,
             'zipCode' => $research->zipCode,
+            'researchpaper' => $research->researchpaper,
             ]);
         $research->update($request->all());
         return redirect('researches');

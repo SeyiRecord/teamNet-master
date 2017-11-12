@@ -27,7 +27,6 @@ class CreateOrgprofilesTable extends Migration
             $table->string('country');
             $table->integer('zipCode')->nullable();
             $table->string('webAddress');
-            $table->binary('logo');
             $table->timestamps();
             $table->foreign('userName')->references('userName')->on('users');
         });

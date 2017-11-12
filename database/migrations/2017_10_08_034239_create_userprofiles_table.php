@@ -22,7 +22,6 @@ class CreateUserprofilesTable extends Migration
             $table->string('city');
             $table->string('state');
             $table->string('country');
-            $table->binary('profileImg');
             $table->timestamps();
             $table->foreign('userName')->references('userName')->on('users');
         });

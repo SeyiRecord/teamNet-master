@@ -5,7 +5,18 @@
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
-                <div class="panel-heading">Dashboard</div>
+                <div class="panel-heading">Dashboard
+                    <form action="/users/search" method="POST" role="search">
+                        {{ csrf_field() }}
+                        <div class="input-group">
+                            <input type="text" class="form-control" name="q" placeholder="Search Users"> <span class="input-group-btn">
+                                <button type="submit" class="btn btn-default">
+                                    <span class="glyphicon glyphicon-search">Search</span>
+                                </button>
+                            </span>
+                        </div>
+                    </form>
+                </div>
 
                 <div class="panel-body">
                     @if (session('status'))
@@ -26,7 +37,19 @@
                             <a href = "/researches" target="_blank">List All Researches</a>
                             <a href = "/createresearch" target="_blank">Create Research</a>
                         </div>
-                        <p>Search Button</p>
+                        <!-- <p>Search Button</p> -->
+                        <div>
+                    <form action="/researches/search" method="POST" role="search">
+                        {{ csrf_field() }}
+                        <div class="input-group">
+                            <input type="text" class="form-control" name="q" placeholder="Search Research"> <span class="input-group-btn">
+                                <button type="submit" class="btn btn-default">
+                                    <span class="glyphicon glyphicon-search">Search</span>
+                                </button>
+                            </span>
+                        </div>
+                    </form>
+                </div>
                     </div>
                 </div>
             </div>

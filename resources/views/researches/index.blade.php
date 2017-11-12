@@ -8,11 +8,7 @@
                 <div class="panel-heading"><H2>{{ Auth::user()->userName }}</H2>Research Page</div>
                 <div class="panel-body">
                 
-<<<<<<< HEAD
-                    @if(count($researches) > 1)
-=======
                     @if(count($researches) > 0)
->>>>>>> d8d4e8ccf1ebff23f0eb22a06521d28ae42598ea
                         <strong><h1> List of Researches </h1></strong>
                         <div class="panel-body">
                             <table >
