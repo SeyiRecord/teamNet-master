@@ -8,8 +8,6 @@ use App\User;
 class UserController extends Controller
 {
     /**
-<<<<<<< HEAD
-=======
      * Create a new controller instance.
      *
      * @return void
@@ -20,7 +18,6 @@ class UserController extends Controller
     }
 
     /**
->>>>>>> d8d4e8ccf1ebff23f0eb22a06521d28ae42598ea
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
@@ -109,8 +106,5 @@ class UserController extends Controller
         } else {
             return redirect('orgprofiles/createorgprofile');
         }
-
-        
-        
     }
 }

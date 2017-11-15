@@ -11,8 +11,6 @@ use Illuminate\Support\Facades\Input;
 class UserprofileController extends Controller
 {
     /**
-<<<<<<< HEAD
-=======
      * Create a new controller instance.
      *
      * @return void
@@ -23,18 +21,14 @@ class UserprofileController extends Controller
     }
 
     /**
->>>>>>> d8d4e8ccf1ebff23f0eb22a06521d28ae42598ea
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
     public function index()
     {
-<<<<<<< HEAD
         //
-=======
         // Should be visible only to admin users
->>>>>>> d8d4e8ccf1ebff23f0eb22a06521d28ae42598ea
         $userProfiles = UserProfile::all();
         return view('userprofiles.index',compact('userProfiles'));
     }
@@ -83,6 +77,7 @@ class UserprofileController extends Controller
     public function show($id)
     {
         //
+        $users = User::all(); // For testing connections in showuser
         $userprofile = Userprofile::find($id);
         return view('userprofiles.showuser', compact('userprofile'));
     }

@@ -59,44 +59,16 @@ class User extends Authenticatable
         return $this->hasMany(Attachment::class);
     }
 
-    public function roles() {
-        return $this->belongsToMany(Role::class);
+    
+    public function myConnections(){
+        return $this->belongsToMany(User::class);
     }
 
-     public function isUser()
-     {
-        return ($this->roles()->count()) ? true : false;
-     }
+    public function connectionsof(){
+        return $this->belongsToMany(User::class);
+    }
 
-     public function hasRole($role) {
-        return $this->roles()->pluck("name")->contains($role);
-     }
-
-     private function getIdInArray($array, $term){
-        foreach ($array as $key => $value) {
-            if ($value == $term){
-                return $key;
-            }
-        }        
-        throw new UnexpectedValueException;
-     }
-
-     public function makeUser($title) {
-        $assignedRoles = array();
-        $roles = Role::all()->pluck("name", "id");
-
-        switch ($title){
-            case "superAdmin" :
-                $assignedRoles[] = $this->getIdInArray($roles, 'create');
-            case "admin" :
-                $assignedRoles[] = $this->getIdInArray($roles, 'delete');
-            case "user" :
-                $assignedRoles[] = $this->getIdInArray($roles, 'read');
-                $assignedRoles[] = $this->getIdInArray($roles, 'update');
-            break;
-            default:
-                throw new \Exception("The user does not exist");
-        }
-        $this->roles()->sync($assignedRoles);
-     }
+    public function connections(){
+        return $this->myConnections()->wherePivot('accepted', true)->get()->merge($this->connectionsof()->wherePivot('accepted', true)->get());
+    }
 }

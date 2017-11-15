@@ -6,7 +6,7 @@
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
 
-                <div class="panel-heading"><H2>User Dashboard</H2></div>
+                <div class="panel-heading"><H2>{{ Auth::user()->userName }}</H2><H2>User Dashboard</H2></div>
                 <div class="panel-body">
                     {{ csrf_field() }}
                     {!! Form::model($userprofile,['method' => 'PUT', 'route' => ['userprofiles.update', $userprofile->id], 'files' => true]) !!}
@@ -89,10 +89,23 @@
                         </div>
                     </div>
 
+                    <div class="row">                    
+                        <div class="col-md-6">
+                            <h4>{{ Auth::user()->userName }}'s Connections</h4>
+                            @foreach($users as $user)
+                            @if (count($user->connections) > 0)
+                                <p>{{ Auth::user()->userName }} has connections</p>
+                            @else
+                                <p>{{ Auth::user()->userName }} has no connections</p>
+                            @endif
+                            @endforeach
+                        </div>
+                    </div>
+
                     </form>
                     {!! Form::close() !!}
                     <h4><a href = "/createresearch">Create New Research</a> </h4>
-                    <h4><a href = "/researches">List Researches</a> <br></h4
+                    <h4><a href = "/researches">List Researches</a> <br></h4>
                 </div>
 
             </div>
