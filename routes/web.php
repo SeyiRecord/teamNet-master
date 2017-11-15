@@ -57,9 +57,12 @@ Route::resource('/posts', 'PostController');
 Route::post('/posts/update/{id}', 'PostController@update')->name('posts.update');
 Route::get('/posts/destroy/{id}', 'PostController@destroy')->name('posts.destroy');
 
-// Route::get('/searchresults', 'SearchController@index');
 Route::post('/users/search', 'SearchController@user');
 Route::post('/researches/search', 'SearchController@research');
+
+Route::resource('users', 'UserController');
+Route::resource('adminpanel', 'AdminpanelsController');
+Route::get('search', array('as' => 'search', 'uses' => 'AdminpanelsController@search'));
 
 
 

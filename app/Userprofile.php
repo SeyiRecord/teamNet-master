@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
-class Userprofile extends Model // Y0u should always name the class name with first letter capital for each consequtive words. This should be renamed to UserProfile
+class Userprofile extends Model 
 {
     //
     use Notifiable;
