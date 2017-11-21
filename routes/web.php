@@ -64,6 +64,9 @@ Route::resource('users', 'UserController');
 Route::resource('adminpanel', 'AdminpanelsController');
 Route::get('search', array('as' => 'search', 'uses' => 'AdminpanelsController@search'));
 
+// Route::get('/connections', function () {return view('connections/index');});
+Route::get('/connections/{id}', 'UserprofileController@showConnections');
+
 
 
 /*

@@ -77,9 +77,10 @@ class UserprofileController extends Controller
     public function show($id)
     {
         //
-        $users = User::all(); // For testing connections in showuser
+        $userName = Auth::user()->userName;
+        $count = \DB::table('connections')->where('user','=', $userName)->orWhere('connection','=', $userName)->count();
         $userprofile = Userprofile::find($id);
-        return view('userprofiles.showuser', compact('userprofile'));
+        return view('userprofiles.showuser', compact('count','userprofile'));
     }
 
     /**
@@ -90,7 +91,6 @@ class UserprofileController extends Controller
      */
     public function edit($id)
     {
-        //
         //
         $userprofile = Userprofile::find($id);
         return view('userprofiles.edituserprofile', compact('userprofile'));
@@ -137,5 +137,19 @@ class UserprofileController extends Controller
         //
         userProfile::find($id)->delete();
         return redirect('userprofiles');
+    }
+
+
+    public function showConnections($id)
+    {
+        //
+        $userName = Auth::user()->userName;
+        $count = \DB::table('connections')->where('user','=', $userName)->orWhere('connection','=', $userName)->count();
+        $userprofile = Userprofile::find($id);
+
+        $connections = \DB::table('connections')->select('connection')->where('user','=', $userName)->get();
+        $users = \DB::table('connections')->select('user')->Where('connection','=', $userName)->get();
+        // dd($connections);
+        return view('userprofiles.showconnections', compact('count','userprofile', 'users', 'connections'));
     }
 }

@@ -121,7 +121,6 @@ class ResearchController extends Controller
 
     public function updateRecord(Request $request, $id)
     {
-
         $research = Research::find($id);
         \DB::table('researches')->where('id', $research->id)->update([
             'topic' => $research->topic,

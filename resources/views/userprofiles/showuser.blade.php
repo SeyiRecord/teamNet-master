@@ -10,97 +10,95 @@
                 <div class="panel-body">
                     {{ csrf_field() }}
                     {!! Form::model($userprofile,['method' => 'PUT', 'route' => ['userprofiles.update', $userprofile->id], 'files' => true]) !!}
-
-                    <div class="row">                    
-                        <div class="col-md-6 ">
-                            {!! Form::label('fName', 'First Name', ['class' => 'control-label']) !!}
-                            {!! Form::text('fName', old('fName'), ['class' => 'form-control', 'placeholder' => '', 'disabled'=>'disabled','disabled'=>'disabled']) !!}
-                            <p class="help-block"></p>
-                            @if($errors->has('fName'))
-                                <p class="help-block">,'disabled'=>'disabled'
-                                    {{ $errors->first('fName') }}
-                                </p>
-                            @endif
+                        <div class="row">                    
+                            <div class="col-md-6 ">
+                                {!! Form::label('fName', 'First Name', ['class' => 'control-label']) !!}
+                                {!! Form::text('fName', old('fName'), ['class' => 'form-control', 'placeholder' => '', 'disabled'=>'disabled','disabled'=>'disabled']) !!}
+                                <p class="help-block"></p>
+                                @if($errors->has('fName'))
+                                    <p class="help-block">,'disabled'=>'disabled'
+                                        {{ $errors->first('fName') }}
+                                    </p>
+                                @endif
+                            </div>
                         </div>
-                    </div>
 
-                    <div class="row">                    
-                        <div class="col-md-6">
-                            {!! Form::label('lName', 'Last Name', ['class' => 'control-label']) !!}
-                            {!! Form::text('lName', old('lName'), ['class' => 'form-control', 'placeholder' => '', 'disabled'=>'disabled']) !!}
-                            <p class="help-block"></p>
-                            @if($errors->has('lName'))
-                                <p class="help-block">
-                                    {{ $errors->first('lName') }}
-                                </p>
-                            @endif
+                        <div class="row">                    
+                            <div class="col-md-6">
+                                {!! Form::label('lName', 'Last Name', ['class' => 'control-label']) !!}
+                                {!! Form::text('lName', old('lName'), ['class' => 'form-control', 'placeholder' => '', 'disabled'=>'disabled']) !!}
+                                <p class="help-block"></p>
+                                @if($errors->has('lName'))
+                                    <p class="help-block">
+                                        {{ $errors->first('lName') }}
+                                    </p>
+                                @endif
+                            </div>
                         </div>
-                    </div>
 
-                    <div class="row">                    
-                        <div class="col-md-6">
-                            {!! Form::label('profileSummary', 'Profile Summary', ['class' => 'control-label']) !!}
-                            {!! Form::textarea('profileSummary', old('profileSummary'), ['class' => 'form-control', 'placeholder' => '', 'disabled'=>'disabled']) !!}
-                            <p class="help-block"></p>
-                            @if($errors->has('profileSummary'))
-                                <p class="help-block">
-                                    {{ $errors->first('profileSummary') }}
-                                </p>
-                            @endif
+                        <div class="row">                    
+                            <div class="col-md-6">
+                                {!! Form::label('profileSummary', 'Profile Summary', ['class' => 'control-label']) !!}
+                                {!! Form::textarea('profileSummary', old('profileSummary'), ['class' => 'form-control', 'placeholder' => '', 'disabled'=>'disabled']) !!}
+                                <p class="help-block"></p>
+                                @if($errors->has('profileSummary'))
+                                    <p class="help-block">
+                                        {{ $errors->first('profileSummary') }}
+                                    </p>
+                                @endif
+                            </div>
                         </div>
-                    </div>
 
-                    <div class="row">                    
-                        <div class="col-md-6">
-                            {!! Form::label('city', 'City', ['class' => 'control-label']) !!}
-                            {!! Form::text('city', old('city'), ['class' => 'form-control', 'placeholder' => '', 'disabled'=>'disabled']) !!}
-                            <p class="help-block"></p>
-                            @if($errors->has('city'))
-                                <p class="help-block">
-                                    {{ $errors->first('city') }}
-                                </p>
-                            @endif
+                        <div class="row">                    
+                            <div class="col-md-6">
+                                {!! Form::label('city', 'City', ['class' => 'control-label']) !!}
+                                {!! Form::text('city', old('city'), ['class' => 'form-control', 'placeholder' => '', 'disabled'=>'disabled']) !!}
+                                <p class="help-block"></p>
+                                @if($errors->has('city'))
+                                    <p class="help-block">
+                                        {{ $errors->first('city') }}
+                                    </p>
+                                @endif
+                            </div>
                         </div>
-                    </div>
 
-                    <div class="row">                    
-                        <div class="col-md-6">
-                            {!! Form::label('state', 'State', ['class' => 'control-label']) !!}
-                            {!! Form::text('state', old('state'), ['class' => 'form-control', 'placeholder' => '', 'disabled'=>'disabled']) !!}
-                            <p class="help-block"></p>
-                            @if($errors->has('state'))
-                                <p class="help-block">
-                                    {{ $errors->first('state') }}
-                                </p>
-                            @endif
+                        <div class="row">                    
+                            <div class="col-md-6">
+                                {!! Form::label('state', 'State', ['class' => 'control-label']) !!}
+                                {!! Form::text('state', old('state'), ['class' => 'form-control', 'placeholder' => '', 'disabled'=>'disabled']) !!}
+                                <p class="help-block"></p>
+                                @if($errors->has('state'))
+                                    <p class="help-block">
+                                        {{ $errors->first('state') }}
+                                    </p>
+                                @endif
+                            </div>
                         </div>
-                    </div>
 
-                    <div class="row">                    
-                        <div class="col-md-6">
-                            {!! Form::label('country', 'Country', ['class' => 'control-label']) !!}
-                            {!! Form::text('country', old('country'), ['class' => 'form-control', 'placeholder' => '', 'disabled'=>'disabled']) !!}
-                            <p class="help-block"></p>
-                            @if($errors->has('country'))
-                                <p class="help-block">
-                                    {{ $errors->first('country') }}
-                                </p>
-                            @endif
+                        <div class="row">                    
+                            <div class="col-md-6">
+                                {!! Form::label('country', 'Country', ['class' => 'control-label']) !!}
+                                {!! Form::text('country', old('country'), ['class' => 'form-control', 'placeholder' => '', 'disabled'=>'disabled']) !!}
+                                <p class="help-block"></p>
+                                @if($errors->has('country'))
+                                    <p class="help-block">
+                                        {{ $errors->first('country') }}
+                                    </p>
+                                @endif
+                            </div>
                         </div>
-                    </div>
 
-                    <div class="row">                    
-                        <div class="col-md-6">
-                            <h4>{{ Auth::user()->userName }}'s Connections</h4>
-                            @foreach($users as $user)
-                            @if (count($user->connections) > 0)
-                                <p>{{ Auth::user()->userName }} has connections</p>
-                            @else
-                                <p>{{ Auth::user()->userName }} has no connections</p>
-                            @endif
-                            @endforeach
+                        <div class="row">                    
+                            <div class="col-md-6">
+                                <h4>{{ Auth::user()->userName }}'s Connections</h4>
+                                @if ($count > 0)
+                                    <p>{{ Auth::user()->userName }} has {{count($count)}} connections</p>
+                                @else
+                                    <p>{{ Auth::user()->userName }} has no connections</p>
+                                @endif
+                                
+                            </div>
                         </div>
-                    </div>
 
                     </form>
                     {!! Form::close() !!}
