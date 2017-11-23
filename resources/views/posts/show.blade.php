@@ -34,19 +34,30 @@
             </div>
 
             <div class="row">
-                <div class="col-md-8 col-md-offset-2">
+                <div class="col-xs-10 col-sm-10 col-md-12">
+                <h4>{{$post->comment->count()}} PREVIOUS COMMENTS</h4>
                     @foreach($post->comment as $comments)
-                        {{$comments->body}};
+                        <div class="comment">
+                            <table>
+                                <body>
+                                    <tr><td><strong>{{$comments->user}}</strong><h6>{{$comments->created_at}}</h6></td></tr>
+                                    <tr><td>{{$comments->body}}</td> </tr>
+                                    <tr><td><a href="{{route('comments.edit', $comments->id)}}" class="btn btn-xs btn-primary">Edit</a> <a href="{{route('comments.destroy', $comments->id)}}" class="btn btn-xs btn-danger">Delete</a></td>
+                                    </tr><br>
+                                </body>
+                            </table>
+                        </div>
                     @endforeach
                 </div>
             </div>
+            <br>
 
             <div class="row">
                 <div id="comment-form" class="col-xs-12 col-sm-12 col-md-12">
                     <div id="comment-form">
                         {{Form::open(['route' => ['comments.store', $post->id], 'method' => 'POST']) }}
                         <div class="col-md-6">
-                            {{Form::label('body', "Comment:")}}
+                            {{Form::label('body', "Make a Comment:")}}
                             {{Form::textarea('body', null, ['class' => 'form-control', 'rows' => '5'])}} <br>
 
                             {{Form::submit('Add Comment', ['class' => 'btn btn-success btn-block'])}}

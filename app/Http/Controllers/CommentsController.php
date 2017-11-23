@@ -51,9 +51,7 @@ class CommentsController extends Controller
         $comment->body = $request['body'];
         $comment->approved = true;
         $comment->post()->associate($post);
-        // $comment-> = $request->;
         $comment->save();
-        // Session::flash('success', 'Comment was added');
         return redirect()->route('posts.show', ['post' => $post])->with('message', 'Comment Saved Successfully');
     }
 
@@ -77,6 +75,8 @@ class CommentsController extends Controller
     public function edit($id)
     {
         //
+        $comment = Comment::find($id);
+        return view('comments.edit')->withComment($comment);
     }
 
     /**
@@ -89,6 +89,11 @@ class CommentsController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $comment = Comment::find($id);
+        $this->validate($request, array( 'body' => 'required|max:255', ));
+        $comment->body = $request['body'];
+        $comment->save();
+        return redirect()->route('posts.show',$comment->post->id)->with('message', 'Comment Saved Successfully');
     }
 
     /**
@@ -100,5 +105,7 @@ class CommentsController extends Controller
     public function destroy($id)
     {
         //
+        comment::find($id)->delete();
+        return redirect()->route('posts.show',$comment->post->id)->with('message', 'Comment deleted');
     }
 }
