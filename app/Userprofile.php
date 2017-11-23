@@ -17,7 +17,7 @@ class Userprofile extends Model
      * @var array
      */
     protected $fillable = [
-        'fName', 'lName', 'profileSummary', 'city', 'state', 'country', 'profileImg',
+        'fName', 'lName', 'profileSummary', 'city', 'state', 'country',
     ];
 
 
@@ -36,5 +36,9 @@ class Userprofile extends Model
     
     public function attachment(){
         return $this->hasMany(Attachment::class);
+    }
+    
+    public function Comment(){
+        return $this->hasMany(Comment::class);
     }
 }

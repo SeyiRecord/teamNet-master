@@ -62,7 +62,7 @@ class UserprofileController extends Controller
         $userProfile->city= $request['city'];
         $userProfile->state= $request['state'];
         $userProfile->country= $request['country'];
-        $userProfile->profileImg= $request['profileImg'];
+        // $userProfile->profileImg= $request['profileImg'];
 
         $userProfile->save();
         return redirect('/');
@@ -119,7 +119,7 @@ class UserprofileController extends Controller
             'city' => $userProfile->city,
             'state' => $userProfile->state,
             'country' => $userProfile->country,
-            'profileImg' => $userProfile->profileImg,
+            // 'profileImg' => $userProfile->profileImg,
             ]);
         $userProfile->update(\Request::all());
         return redirect('home');
@@ -144,12 +144,11 @@ class UserprofileController extends Controller
     {
         //
         $userName = Auth::user()->userName;
-        $count = \DB::table('connections')->where('user','=', $userName)->orWhere('connection','=', $userName)->count();
+        $count = \DB::table('connections')->where('user','=', $userName)->orWhere('connection','=', $userName)->Where('accepted','=',true)->count();
         $userprofile = Userprofile::find($id);
 
-        $connections = \DB::table('connections')->select('connection')->where('user','=', $userName)->get();
-        $users = \DB::table('connections')->select('user')->Where('connection','=', $userName)->get();
-        // dd($connections);
-        return view('userprofiles.showconnections', compact('count','userprofile', 'users', 'connections'));
+        $connectionMe = \DB::table('connections')->select('connection')->where('user','=', $userName)->Where('accepted','=',true)->get();
+        $myConnections = \DB::table('connections')->select('user')->Where('connection','=', $userName)->Where('accepted','=',true)->get();
+        return view('connections.index', compact('count','userprofile', 'myConnections', 'connectionMe'));
     }
 }

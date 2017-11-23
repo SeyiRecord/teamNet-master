@@ -96,19 +96,7 @@
                             </div>
                         </div>
                         
-                        <div class="form-group{{ $errors->has('profileImg') ? ' has-error' : '' }}">
-                            
-                            <label for="profileImg" class="col-md-4 control-label">Profile Image</label>
-                            <div class="col-md-6">
-                                <input id="profileImg" type="file" name="profileImg" value="{{ old('profileImg') }}" required autofocus>
-
-                                @if ($errors->has('profileImg'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('profileImg') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
+                        
 
 
                         <div class="form-group">

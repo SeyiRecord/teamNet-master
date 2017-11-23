@@ -60,7 +60,7 @@ class User extends Authenticatable
     }
 
     
-    public function myConnections(){
+    /*public function myConnections(){
         return $this->belongsToMany(User::class);
     }
 
@@ -70,5 +70,5 @@ class User extends Authenticatable
 
     public function connections(){
         return $this->myConnections()->wherePivot('accepted', true)->get()->merge($this->connectionsof()->wherePivot('accepted', true)->get());
-    }
+    }*/
 }

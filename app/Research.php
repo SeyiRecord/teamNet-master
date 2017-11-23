@@ -32,4 +32,8 @@ class Research extends Model
     public function attachment(){
         return $this->hasMany(Attachment::class);
     }
+
+    public function Comment(){
+        return $this->hasMany(Comment::class);
+    }
 }

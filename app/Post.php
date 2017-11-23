@@ -14,4 +14,8 @@ class Post extends Model
     //custom timestamps name
     const CREATED_AT = 'created';
     const UPDATED_AT = 'modified';
+
+    public function Comment(){
+        return $this->hasMany(Comment::class);
+    }
 }

@@ -65,7 +65,11 @@ Route::resource('adminpanel', 'AdminpanelsController');
 Route::get('search', array('as' => 'search', 'uses' => 'AdminpanelsController@search'));
 
 // Route::get('/connections', function () {return view('connections/index');});
+Route::get('/connections', 'UserprofileController@showConnections');
 Route::get('/connections/{id}', 'UserprofileController@showConnections');
+
+// Route::resource('comments', 'CommentsController')
+Route::post('comments/{post_id})', ['uses' => 'CommentsController@store', 'as' => 'comments.store']);
 
 
 
