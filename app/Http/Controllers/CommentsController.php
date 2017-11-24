@@ -105,7 +105,15 @@ class CommentsController extends Controller
     public function destroy($id)
     {
         //
-        comment::find($id)->delete();
-        return redirect()->route('posts.show',$comment->post->id)->with('message', 'Comment deleted');
+        $comment = Comment::find($id);
+        $post_id = $comment->post->id;
+        $comment->delete();
+        return redirect()->route('posts.show',$post_id)->with('message', 'Comment deleted');
+    }
+    public function delete($id)
+    {
+        //
+        $comment = Comment::find($id);
+        return view('comments.delete')->withComment($comment)->with('message', 'Comment deleted');
     }
 }

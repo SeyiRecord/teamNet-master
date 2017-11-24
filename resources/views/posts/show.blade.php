@@ -42,7 +42,7 @@
                                 <body>
                                     <tr><td><strong>{{$comments->user}}</strong><h6>{{$comments->created_at}}</h6></td></tr>
                                     <tr><td>{{$comments->body}}</td> </tr>
-                                    <tr><td><a href="{{route('comments.edit', $comments->id)}}" class="btn btn-xs btn-primary">Edit</a> <a href="{{route('comments.destroy', $comments->id)}}" class="btn btn-xs btn-danger">Delete</a></td>
+                                    <tr><td><a href="{{route('comments.edit', $comments->id)}}" class="btn btn-xs btn-primary">Edit</a> <a href="{{route('comments.delete', $comments->id)}}" class="btn btn-xs btn-danger">Delete</a></td>
                                     </tr><br>
                                 </body>
                             </table>
