@@ -35,21 +35,24 @@
                             <a href = "/userprofiles/showuser/{{$id}}" target="_blank">View User Profile</a>
                             <a href = "/userprofiles/edituserprofile/{{$id}}" target="_blank">Edit User Profile</a> <br>
                             <a href = "/researches" target="_blank">List All Researches</a>
-                            <a href = "/createresearch" target="_blank">Create Research</a>
+                            <a href = "/createresearch" target="_blank">Create Research</a> <br>
+                            <a href = "/posts" target="_blank">List All Posts</a>
+                            <a href = "/posts/create" target="_blank">Create Post</a>
                         </div>
+
                         <!-- <p>Search Button</p> -->
                         <div>
-                    <form action="/researches/search" method="POST" role="search">
-                        {{ csrf_field() }}
-                        <div class="input-group">
-                            <input type="text" class="form-control" name="q" placeholder="Search Research"> <span class="input-group-btn">
-                                <button type="submit" class="btn btn-default">
-                                    <span class="glyphicon glyphicon-search">Search</span>
-                                </button>
-                            </span>
+                            <form action="/researches/search" method="POST" role="search">
+                                {{ csrf_field() }}
+                                <div class="input-group">
+                                    <input type="text" class="form-control" name="q" placeholder="Search Research"> <span class="input-group-btn">
+                                        <button type="submit" class="btn btn-default">
+                                            <span class="glyphicon glyphicon-search">Search</span>
+                                        </button>
+                                    </span>
+                                </div>
+                            </form>
                         </div>
-                    </form>
-                </div>
                     </div>
                 </div>
             </div>

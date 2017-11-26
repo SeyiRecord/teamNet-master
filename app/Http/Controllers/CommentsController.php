@@ -76,7 +76,12 @@ class CommentsController extends Controller
     {
         //
         $comment = Comment::find($id);
-        return view('comments.edit')->withComment($comment);
+        if ((Auth::user()->userType == "Admin") || $comment->user == Auth::user()->userName){
+            return view('comments.edit')->withComment($comment);
+        }
+        else {
+            return view('errors.access')->with('message', 'Comment owner restricts access');
+        }
     }
 
     /**

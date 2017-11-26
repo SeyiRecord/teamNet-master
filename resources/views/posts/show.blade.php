@@ -42,8 +42,14 @@
                                 <body>
                                     <tr><td><strong>{{$comments->user}}</strong><h6>{{$comments->created_at}}</h6></td></tr>
                                     <tr><td>{{$comments->body}}</td> </tr>
-                                    <tr><td><a href="{{route('comments.edit', $comments->id)}}" class="btn btn-xs btn-primary">Edit</a> <a href="{{route('comments.delete', $comments->id)}}" class="btn btn-xs btn-danger">Delete</a></td>
-                                    </tr><br>
+                                    <tr>
+                                        @if($comments->user == Auth::user()->userName)
+                                            <td><a href="{{route('comments.edit', $comments->id)}}" class="btn btn-xs btn-primary">Edit</a></td>
+                                        @endif
+                                        @if($comments->user == Auth::user()->userName || Auth::user()->userType == "Admin")<td><a href="{{route('comments.delete', $comments->id)}}" class="btn btn-xs btn-danger">Delete</a></td>
+                                        @endif
+                                    </tr>
+                                    <br>
                                 </body>
                             </table>
                         </div>
