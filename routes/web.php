@@ -38,7 +38,6 @@ Route::get('/orgprofiles/showorg/{id}', 'OrgprofileController@show');
 Route::resource('orgprofiles','OrgprofileController');
 
 Route::get('/createresearch', 'ResearchController@create');
-Route::get('/researches/showresearch/{id}', 'ResearchController@show');
 Route::get('/researches/editresearch/{id}', 'ResearchController@edit');
 Route::post('/researches/store', 'ResearchController@store');
 Route::resource('/researches', 'ResearchController');
@@ -68,7 +67,7 @@ Route::get('search', array('as' => 'search', 'uses' => 'AdminpanelsController@se
 Route::get('/connections', 'UserprofileController@showConnections');
 Route::get('/connections/{id}', 'UserprofileController@showConnections');
 
-// Route::resource('comments', 'CommentsController')
+Route::post('comments/{research_id})', ['uses' => 'CommentsController@resComment', 'as' => 'comments.resComment']);
 Route::post('comments/{post_id})', ['uses' => 'CommentsController@store', 'as' => 'comments.store']);
 Route::get('comments/{id}/edit', ['uses' => 'CommentsController@edit', 'as'=> 'comments.edit']);
 Route::put('comments/{id}', ['uses' => 'CommentsController@update', 'as'=> 'comments.update']);

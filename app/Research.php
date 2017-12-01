@@ -25,7 +25,7 @@ class Research extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function Participation(){
+    public function participation(){
         return $this->hasMany(Participation::class);
     }
 
@@ -33,7 +33,7 @@ class Research extends Model
         return $this->hasMany(Attachment::class);
     }
 
-    public function Comment(){
+    public function comment(){
         return $this->hasMany(Comment::class);
     }
 }

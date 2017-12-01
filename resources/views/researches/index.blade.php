@@ -29,7 +29,7 @@
                                 </thead>
                                 <tbody>
                                     <tr>
-                                        <td><a href="/researches/showresearch/{{$research->id}}" target="_blank">{{$research->topic}}</a>&emsp;</td>
+                                        <td><a href="/researches/{{$research->id}}" target="_blank">{{$research->topic}}</a>&emsp;</td>
                                         <td>{{$research->startDate}}&emsp;</td>
                                         <td>{{$research->endDate}}&emsp;</td>
                                         <td>{{$research->organization}}&emsp;</td>

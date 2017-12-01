@@ -15,7 +15,7 @@ class Post extends Model
     const CREATED_AT = 'created';
     const UPDATED_AT = 'modified';
 
-    public function Comment(){
+    public function comment(){
         return $this->hasMany(Comment::class);
     }
 }

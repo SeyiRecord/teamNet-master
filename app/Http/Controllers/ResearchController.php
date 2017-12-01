@@ -87,7 +87,7 @@ class ResearchController extends Controller
     {
         //
         $research = Research::find($id);
-        return view('researches.showresearch', compact('research'));
+        return view('researches.show', compact('research'));
     }
 
     /**

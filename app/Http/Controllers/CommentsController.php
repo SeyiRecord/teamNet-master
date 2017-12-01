@@ -6,6 +6,7 @@ use App\Comment;
 use Auth;
 use App\User;
 use App\Post;
+use App\Research;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
@@ -13,26 +14,6 @@ use Session;
 
 class CommentsController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
     /**
      * Store a newly created resource in storage.
      *
@@ -53,17 +34,6 @@ class CommentsController extends Controller
         $comment->post()->associate($post);
         $comment->save();
         return redirect()->route('posts.show', ['post' => $post])->with('message', 'Comment Saved Successfully');
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
     }
 
     /**
@@ -98,7 +68,12 @@ class CommentsController extends Controller
         $this->validate($request, array( 'body' => 'required|max:255', ));
         $comment->body = $request['body'];
         $comment->save();
-        return redirect()->route('posts.show',$comment->post->id)->with('message', 'Comment Saved Successfully');
+        if ($comment->post_id != null) {
+            return redirect()->route('posts.show',$comment->post->id)->with('message', 'Comment Saved Successfully');
+        }
+        else if ($comment->research_id != null){
+            return redirect()->route('researches.show',$comment->research->id)->with('message', 'Comment Saved Successfully');
+        }
     }
 
     /**
@@ -111,9 +86,16 @@ class CommentsController extends Controller
     {
         //
         $comment = Comment::find($id);
-        $post_id = $comment->post->id;
-        $comment->delete();
-        return redirect()->route('posts.show',$post_id)->with('message', 'Comment deleted');
+        if ($comment->post_id != null) {
+            $post_id = $comment->post->id;
+            $comment->delete();
+            return redirect()->route('posts.show',$post_id)->with('message', 'Comment deleted');
+        }
+        else if ($comment->research_id != null){
+            $research_id = $comment->research->id;
+            $comment->delete();
+            return redirect()->route('researches.show',$research_id)->with('message', 'Comment deleted');
+        }
     }
     public function delete($id)
     {
@@ -121,4 +103,22 @@ class CommentsController extends Controller
         $comment = Comment::find($id);
         return view('comments.delete')->withComment($comment)->with('message', 'Comment deleted');
     }
+
+
+    public function resComment(Request $request, $research_id)
+    {
+        //
+        $this->validate($request, array(
+            'body' => 'required|max:255',
+        ));
+        $research = Research::find($research_id);
+        $comment = new Comment();
+        $comment->user = Auth::user()->userName;
+        $comment->body = $request['body'];
+        $comment->approved = true;
+        $comment->research()->associate($research);
+        $comment->save();
+        return view('researches.show', compact('research'))->with('message', 'Comment Saved Successfully');
+    }
+
 }
