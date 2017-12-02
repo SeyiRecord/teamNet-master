@@ -6,7 +6,7 @@
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
 
-                <div class="panel-heading"><H2>{{ Auth::user()->userName }}</H2><H2>User Dashboard</H2></div>
+                <div class="panel-heading"><H2>{{"$userprofile->fName $userprofile->lName"}}</H2><H2>User Dashboard</H2></div>
                 <div class="panel-body">
                     {{ csrf_field() }}
                     {!! Form::model($userprofile,['method' => 'PUT', 'route' => ['userprofiles.update', $userprofile->id], 'files' => true]) !!}
@@ -92,11 +92,10 @@
                             <div class="col-md-6">
                                 <h4>{{ Auth::user()->userName }}'s Connections</h4>
                                 @if ($count > 0)
-                                    <p>{{ Auth::user()->userName }} has {{count($count)}} connections</p>
+                                    <p>{{ Auth::user()->userName }} has {{$count}} connections</p>
                                 @else
                                     <p>{{ Auth::user()->userName }} has no connections</p>
                                 @endif
-                                
                             </div>
                         </div>
 

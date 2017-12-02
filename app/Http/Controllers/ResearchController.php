@@ -36,6 +36,11 @@ class ResearchController extends Controller
         return view('researches.index', compact('researches'));
     }
 
+    public function all() {
+        $researches = Research::all();
+        return view('researches.all', compact('researches'));
+    }
+
     /**
      * Show the form for creating a new resource.
      *

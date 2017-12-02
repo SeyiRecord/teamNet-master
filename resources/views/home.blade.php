@@ -34,13 +34,12 @@
                         <div class="links">
                             <a href = "/userprofiles/show/{{$id}}" target="_blank">View User Profile</a>
                             <a href = "/userprofiles/edituserprofile/{{$id}}" target="_blank">Edit User Profile</a> <br>
-                            <a href = "/researches" target="_blank">List All Researches</a>
+                            <a href = "/researches/all" target="_blank">List All Researches</a>
                             <a href = "/createresearch" target="_blank">Create Research</a> <br>
                             <a href = "/posts" target="_blank">List All Posts</a>
                             <a href = "/posts/create" target="_blank">Create Post</a>
                         </div>
 
-                        <!-- <p>Search Button</p> -->
                         <div>
                             <form action="/researches/search" method="POST" role="search">
                                 {{ csrf_field() }}

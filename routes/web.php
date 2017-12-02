@@ -39,7 +39,9 @@ Route::resource('orgprofiles','OrgprofileController');
 
 Route::get('/createresearch', 'ResearchController@create');
 Route::get('/researches/editresearch/{id}', 'ResearchController@edit');
+Route::get('/researches/all', 'ResearchController@all');
 Route::post('/researches/store', 'ResearchController@store');
+Route::get('/researches/destroy/{id}', 'ResearchController@destroy');
 Route::resource('/researches', 'ResearchController');
 
 Route::get('/participations/{id}', 'ParticipationController@save');
