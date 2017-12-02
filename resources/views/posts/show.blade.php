@@ -35,7 +35,7 @@
 
             <div class="row">
                 <div class="col-xs-10 col-sm-10 col-md-12">
-                <h4>{{$post->comment->count()}} PREVIOUS COMMENTS</h4>
+                <h4>{{count($post->comment)}} PREVIOUS COMMENTS</h4>
                     @foreach($post->comment as $comments)
                         <div class="comment">
                             <table>
@@ -61,7 +61,7 @@
             <div class="row">
                 <div id="comment-form" class="col-xs-12 col-sm-12 col-md-12">
                     <div id="comment-form">
-                        {{Form::open(['route' => ['comments.store', $post->id], 'method' => 'POST']) }}
+                        {{Form::open(['route' => ['comments.postComment', $post->id], 'method' => 'POST']) }}
                         <div class="col-md-6">
                             {{Form::label('body', "Make a Comment:")}}
                             {{Form::textarea('body', null, ['class' => 'form-control', 'rows' => '5'])}} <br>

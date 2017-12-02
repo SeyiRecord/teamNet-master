@@ -26,7 +26,7 @@ Route::resource('/user', 'UserController' );
 
 Route::get('/userprofiles/createuserprofile', 'UserprofileController@create');
 Route::get('/userprofiles/edituserprofile/{id}', 'UserprofileController@edit');
-Route::get('/userprofiles/showuser/{id}', 'UserprofileController@show');
+Route::get('/userprofiles/show/{id}', 'UserprofileController@show');
 Route::post('/userprofiles/createuserprofile', 'UserprofileController@store');
 Route::post('userType','UserController@userType')->name('userType');
 Route::resource('userprofiles','UserprofileController');
@@ -67,8 +67,9 @@ Route::get('search', array('as' => 'search', 'uses' => 'AdminpanelsController@se
 Route::get('/connections', 'UserprofileController@showConnections');
 Route::get('/connections/{id}', 'UserprofileController@showConnections');
 
-Route::post('comments/{research_id})', ['uses' => 'CommentsController@resComment', 'as' => 'comments.resComment']);
-Route::post('comments/{post_id})', ['uses' => 'CommentsController@store', 'as' => 'comments.store']);
+Route::post('comments/user/{user_id})', ['uses' => 'CommentsController@userComment', 'as' => 'comments.userComment']);
+Route::post('comments/research/{research_id})', ['uses' => 'CommentsController@resComment', 'as' => 'comments.resComment']);
+Route::post('comments/post/{post_id})', ['uses' => 'CommentsController@postComment', 'as' => 'comments.postComment']);
 Route::get('comments/{id}/edit', ['uses' => 'CommentsController@edit', 'as'=> 'comments.edit']);
 Route::put('comments/{id}', ['uses' => 'CommentsController@update', 'as'=> 'comments.update']);
 Route::delete('comments/destroy/{id}', ['uses' => 'CommentsController@destroy', 'as'=> 'comments.destroy']);

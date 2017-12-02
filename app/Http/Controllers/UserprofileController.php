@@ -80,7 +80,7 @@ class UserprofileController extends Controller
         $userName = Auth::user()->userName;
         $count = \DB::table('connections')->where('user','=', $userName)->orWhere('connection','=', $userName)->count();
         $userprofile = Userprofile::find($id);
-        return view('userprofiles.showuser', compact('count','userprofile'));
+        return view('userprofiles.show', compact('count','userprofile'));
     }
 
     /**

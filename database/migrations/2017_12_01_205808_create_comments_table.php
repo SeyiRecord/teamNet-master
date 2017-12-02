@@ -22,10 +22,10 @@ class CreateCommentsTable extends Migration
             $table->foreign('post_id')->references('id')->on('posts')->onDelete('cascade');
             $table->integer('research_id')->unsigned()->nullable();
             $table->foreign('research_id')->references('id')->on('researches')->onDelete('cascade');
-            $table->integer('user_id')->unsigned()->nullable();
-            $table->foreign('user_id')->references('id')->on('userprofiles')->onDelete('cascade');
-            $table->integer('org_id')->unsigned()->nullable();
-            $table->foreign('org_id')->references('id')->on('orgprofiles')->onDelete('cascade');
+            $table->integer('userprofile_id')->unsigned()->nullable();
+            $table->foreign('userprofile_id')->references('id')->on('userprofiles')->onDelete('cascade');
+            $table->integer('orgprofile_id')->unsigned()->nullable();
+            $table->foreign('orgprofile_id')->references('id')->on('orgprofiles')->onDelete('cascade');
             $table->boolean('approved');
             $table->timestamps();
         });
@@ -40,8 +40,8 @@ class CreateCommentsTable extends Migration
     {
         Schema::dropForeign('[post_id]');
         Schema::dropForeign('[research_id]');
-        Schema::dropForeign('[user_id]');
-        Schema::dropForeign('[org_id]');
+        Schema::dropForeign('[userprofile_id]');
+        Schema::dropForeign('[orgprofile_id]');
         Schema::dropIfExists('comments');
     }
 }

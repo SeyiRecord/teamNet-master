@@ -7,6 +7,7 @@ use Auth;
 use App\User;
 use App\Post;
 use App\Research;
+use App\Userprofile;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
@@ -20,7 +21,7 @@ class CommentsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request, $post_id)
+    public function postComment(Request $request, $post_id)
     {
         //
         $this->validate($request, array(
@@ -74,6 +75,9 @@ class CommentsController extends Controller
         else if ($comment->research_id != null){
             return redirect()->route('researches.show',$comment->research->id)->with('message', 'Comment Saved Successfully');
         }
+        else if ($comment->userprofile_id != null){
+            return redirect()->route('userprofiles.show',$comment->userprofile->id)->with('message', 'Comment Saved Successfully');
+        }
     }
 
     /**
@@ -96,17 +100,20 @@ class CommentsController extends Controller
             $comment->delete();
             return redirect()->route('researches.show',$research_id)->with('message', 'Comment deleted');
         }
+        else if ($comment->userprofile_id != null){
+            $userprofile_id = $comment->userprofile->id;
+            $comment->delete();
+            return redirect()->route('userprofiles.show',$userprofile_id)->with('message', 'Comment deleted');
+        }
     }
-    public function delete($id)
-    {
+    public function delete($id) {
         //
         $comment = Comment::find($id);
         return view('comments.delete')->withComment($comment)->with('message', 'Comment deleted');
     }
 
 
-    public function resComment(Request $request, $research_id)
-    {
+    public function resComment(Request $request, $research_id) {
         //
         $this->validate($request, array(
             'body' => 'required|max:255',
@@ -118,7 +125,27 @@ class CommentsController extends Controller
         $comment->approved = true;
         $comment->research()->associate($research);
         $comment->save();
-        return view('researches.show', compact('research'))->with('message', 'Comment Saved Successfully');
+        return redirect()->route('researches.show', ['research' => $research])->with('message', 'Comment Saved Successfully');
     }
+
+        /*return view('researches.show', compact('research'))->with('message', 'Comment Saved Successfully');
+    }*/
+
+    public function userComment(Request $request, $user_id) {
+        //
+        $this->validate($request, array(
+            'body' => 'required|max:255',
+        ));
+        $userprofile = Userprofile::find($user_id);
+        $comment = new Comment();
+        $comment->user = Auth::user()->userName;
+        $comment->body = $request['body'];
+        $comment->approved = true;
+        $comment->userprofile()->associate($userprofile);
+        $comment->save();
+        return redirect()->route('userprofiles.show', ['userprofile' => $userprofile])->with('message', 'Comment Saved Successfully');
+        // return view('userprofiles.show', compact('userprofile'))->with('message', 'Comment Saved Successfully');
+    }
+
 
 }

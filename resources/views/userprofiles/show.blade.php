@@ -102,6 +102,44 @@
 
                     </form>
                     {!! Form::close() !!}
+
+                    <div class="row">
+                        <div class="col-xs-10 col-sm-10 col-md-12">
+                        <h4>{{count($userprofile->comment)}} PREVIOUS COMMENTS</h4>
+                            @foreach($userprofile->comment as $comments)
+                                <div class="comment">
+                                    <table>
+                                        <body>
+                                            <tr><td><strong>{{$comments->user}}: </strong><h6>{{$comments->created_at}}</h6></td></tr>
+                                            <tr><td>{{$comments->body}}</td> </tr>
+                                            <tr>
+                                                @if($comments->user == Auth::user()->userName)
+                                                    <td><a href="{{route('comments.edit', $comments->id)}}" class="btn btn-xs btn-primary">Edit</a></td>
+                                                @endif
+                                                @if($comments->user == Auth::user()->userName || Auth::user()->userType == "Admin")<td><a href="{{route('comments.delete', $comments->id)}}" class="btn btn-xs btn-danger">Delete</a></td>
+                                                @endif
+                                            </tr>
+                                            <br>
+                                        </body>
+                                    </table>
+                                </div>
+                            @endforeach
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div id="comment-form" class="col-xs-12 col-sm-12 col-md-12">
+                            <div id="comment-form">
+                                {{Form::open(['route' => ['comments.userComment', $userprofile->id], 'method' => 'POST']) }}
+                                <div class="col-md-6">
+                                    {{Form::label('body', "Make a Comment:")}}
+                                    {{Form::textarea('body', null, ['class' => 'form-control', 'rows' => '5'])}} <br>
+
+                                    {{Form::submit('Add Comment', ['class' => 'btn btn-success btn-block'])}}
+                                </div>
+                                {{Form::close() }}
+                            </div>
+                        </div>
+                    </div>
                     <h4><a href = "/createresearch">Create New Research</a> </h4>
                     <h4><a href = "/researches">List Researches</a> <br></h4>
                 </div>

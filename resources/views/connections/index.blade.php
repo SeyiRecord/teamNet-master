@@ -36,13 +36,13 @@
                                         <body>
                                             <tr>
                                             @foreach($connectionMe as $connectionMe)
-                                                <td><a href="/userprofiles/showuser/{{$userprofile->id}}" target="_blank">{{$connectionMe->connection}}</a></td>
+                                                <td><a href="/userprofiles/show/{{$userprofile->id}}" target="_blank">{{$connectionMe->connection}}</a></td>
                                                 <td>Show</td>
                                             @endforeach
                                             </tr>
                                             <tr>
                                             @foreach($myConnections as $myConnection)
-                                                <td><a href="/userprofiles/showuser/{{$userprofile->id}}" target="_blank">{{$myConnection->user}}</a></td>
+                                                <td><a href="/userprofiles/show/{{$userprofile->id}}" target="_blank">{{$myConnection->user}}</a></td>
                                                 <td>Show</td>
                                             @endforeach
                                             </tr>
