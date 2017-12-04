@@ -15,10 +15,10 @@ class CreateConnectionsTable extends Migration
     {
         Schema::create('connections', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('user', 32);
-            $table->foreign('user')->references('userName')->on('users');
-            $table->string('connection', 32);
-            $table->foreign('connection')->references('userName')->on('users');
+            $table->string('sender', 32);
+            $table->foreign('sender')->references('userName')->on('users');
+            $table->string('receiver', 32);
+            $table->foreign('receiver')->references('userName')->on('users');
             $table->boolean('accepted');
             $table->timestamps();
         });

@@ -67,7 +67,9 @@ Route::get('search', array('as' => 'search', 'uses' => 'AdminpanelsController@se
 
 // Route::get('/connections', function () {return view('connections/index');});
 Route::get('/connections', 'UserprofileController@showConnections');
-Route::get('/connections/{id}', 'UserprofileController@showConnections');
+Route::get('/connections/show/{id}', 'UserprofileController@showConnections');
+Route::get('/connections/save/{userName}', 'ConnectionController@save');
+Route::resource('connections', 'ConnectionController');
 
 Route::post('comments/user/{user_id})', ['uses' => 'CommentsController@userComment', 'as' => 'comments.userComment']);
 Route::post('comments/research/{research_id})', ['uses' => 'CommentsController@resComment', 'as' => 'comments.resComment']);
@@ -76,34 +78,3 @@ Route::get('comments/{id}/edit', ['uses' => 'CommentsController@edit', 'as'=> 'c
 Route::put('comments/{id}', ['uses' => 'CommentsController@update', 'as'=> 'comments.update']);
 Route::delete('comments/destroy/{id}', ['uses' => 'CommentsController@destroy', 'as'=> 'comments.destroy']);
 Route::get('comments/delete/{id}', ['uses' => 'CommentsController@delete', 'as'=> 'comments.delete']);
-
-
-
-
-/*
-Route::get('/Profile', function () {
-    return view('Profile');
-});
-Route::get('/viewprofile', function () {
-    return view('viewProfile');
-});
-
-Route::get('/editprofile', function () {
-    return view('editProfile');
-});
-
-Route::get('/createresearch', function () {
-    return view('createResearch');
-});
-
-Route::get('/researchdetails', function () {
-    return view('researchDetails');
-});
-
-Route::get('/listresearch', function () {
-    return view('viewResearch');
-});
-
-Route::get('/editresearch', function () {
-    return view('editResearch');
-});*/

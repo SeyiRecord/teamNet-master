@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Userprofile;
 use Auth;
 use App\User;
+use App\Connection;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
 
@@ -78,7 +79,7 @@ class UserprofileController extends Controller
     {
         //
         $userName = Auth::user()->userName;
-        $count = \DB::table('connections')->where('user','=', $userName)->orWhere('connection','=', $userName)->count();
+        $count = \DB::table('connections')->where('sender','=', $userName)->orWhere('receiver','=', $userName)->count();
         $userprofile = Userprofile::find($id);
         return view('userprofiles.show', compact('count','userprofile'));
     }

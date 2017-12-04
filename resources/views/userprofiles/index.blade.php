@@ -22,7 +22,7 @@
                         <tbody>
                             @foreach($userProfiles as $userprofile)
                             <tr>
-                                <td>{{ $userprofile->userName }}</td>
+                                <td><a href="/userprofiles/show/{{$userprofile->id}}">{{ $userprofile->userName }}</a> </td>
                                 <td>{{ $userprofile->fName }}</td>
                                 <td>{{ $userprofile->lName }}</td>
                                 <td>{{ $userprofile->profileSummary }}</td>

@@ -139,8 +139,9 @@
                             </div>
                         </div>
                     </div>
+                    <h4><a href = "/connections/save/{{$userprofile->userName}}">Connect with {{"$userprofile->fName $userprofile->lName"}} </a> </h4>
                     <h4><a href = "/createresearch">Create New Research</a> </h4>
-                    <h4><a href = "/researches">List Researches</a> <br></h4>
+                    <h4><a href = "/researches">List My Researches</a> <br></h4>
                 </div>
 
             </div>
