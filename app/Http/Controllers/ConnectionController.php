@@ -55,11 +55,9 @@ class ConnectionController extends Controller
         return view('connections.index', compact('connection'));
     }
 
-    public function save(Request $request, $userName)
+    public function save($userName)
     {
-        // //
-        // dd($userName);
-        // $userprofile = Userprofile::find($id);
+        //
         $user = Auth::user()->userName;
         $accepted = false;
         $connection = new connection();
@@ -67,8 +65,7 @@ class ConnectionController extends Controller
         $connection->sender=$user;
         $connection->receiver=$userName;
         $connection->accepted=$accepted;
-        // $connection->save();
-        $results = \DB::table('connections')->select('sender')->where('sender', '=', $user)->where('receiver', '=', $connection)->count();
+        $results = \DB::table('connections')->select('sender')->where('receiver', '=', $connection)->count();
         if ($results < 1) {
             $connection->save();
         }

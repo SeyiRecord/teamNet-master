@@ -145,11 +145,11 @@ class UserprofileController extends Controller
     {
         //
         $userName = Auth::user()->userName;
-        $count = \DB::table('connections')->where('user','=', $userName)->orWhere('connection','=', $userName)->Where('accepted','=',true)->count();
+        $count = \DB::table('connections')->where('sender','=', $userName)->orWhere('receiver','=', $userName)->Where('accepted','=',true)->count();
         $userprofile = Userprofile::find($id);
 
-        $connectionMe = \DB::table('connections')->select('connection')->where('user','=', $userName)->Where('accepted','=',true)->get();
-        $myConnections = \DB::table('connections')->select('user')->Where('connection','=', $userName)->Where('accepted','=',true)->get();
+        $connectionMe = \DB::table('connections')->select('receiver')->where('sender','=', $userName)->Where('accepted','=',true)->get();
+        $myConnections = \DB::table('connections')->select('sender')->Where('receiver','=', $userName)->Where('accepted','=',true)->get();
         return view('connections.index', compact('count','userprofile', 'myConnections', 'connectionMe'));
     }
 }
