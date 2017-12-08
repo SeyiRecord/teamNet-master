@@ -79,8 +79,10 @@ class UserprofileController extends Controller
     {
         //
         $userName = Auth::user()->userName;
-        $count = \DB::table('connections')->where('sender','=', $userName)->orWhere('receiver','=', $userName)->count();
+        $query = \DB::table('connections')->where('sender','=', $userName)->orWhere('receiver','=', $userName)->get();
+        $count = $query->Where('accepted','=',1)->count();
         $userprofile = Userprofile::find($id);
+
         return view('userprofiles.show', compact('count','userprofile'));
     }
 
@@ -140,16 +142,7 @@ class UserprofileController extends Controller
         return redirect('userprofiles');
     }
 
-
-    public function showConnections($id)
-    {
-        //
-        $userName = Auth::user()->userName;
-        $count = \DB::table('connections')->where('sender','=', $userName)->orWhere('receiver','=', $userName)->Where('accepted','=',true)->count();
-        $userprofile = Userprofile::find($id);
-
-        $connectionMe = \DB::table('connections')->select('receiver')->where('sender','=', $userName)->Where('accepted','=',true)->get();
-        $myConnections = \DB::table('connections')->select('sender')->Where('receiver','=', $userName)->Where('accepted','=',true)->get();
-        return view('connections.index', compact('count','userprofile', 'myConnections', 'connectionMe'));
-    }
 }
+
+
+

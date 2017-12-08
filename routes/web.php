@@ -66,8 +66,8 @@ Route::resource('adminpanel', 'AdminpanelsController');
 Route::get('search', array('as' => 'search', 'uses' => 'AdminpanelsController@search'));
 
 // Route::get('/connections', function () {return view('connections/index');});
-Route::get('/connections', 'UserprofileController@showConnections');
-Route::get('/connections/show/{id}', 'UserprofileController@showConnections');
+Route::get('/connections/index', 'ConnectionController@showConnections');
+Route::get('/connections/show/{id}', 'ConnectionController@showConnections');
 Route::get('/connections/save/{userName}', 'ConnectionController@save');
 Route::resource('connections', 'ConnectionController');
 
@@ -78,3 +78,7 @@ Route::get('comments/{id}/edit', ['uses' => 'CommentsController@edit', 'as'=> 'c
 Route::put('comments/{id}', ['uses' => 'CommentsController@update', 'as'=> 'comments.update']);
 Route::delete('comments/destroy/{id}', ['uses' => 'CommentsController@destroy', 'as'=> 'comments.destroy']);
 Route::get('comments/delete/{id}', ['uses' => 'CommentsController@delete', 'as'=> 'comments.delete']);
+
+
+Route::get('/uploadfile','UploadFileController@index');
+Route::post('/uploadfile','UploadFileController@showUploadFile');

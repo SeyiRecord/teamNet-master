@@ -29,10 +29,13 @@ class ConnectionController extends Controller
     //
     public function showConnections() {
         $userName = Auth::user()->userName;
-        $count = \DB::table('connections')->where('user','=', $userName)->orWhere('connection','=', $userName)->Where('accepted','=',true)->count();
+        $query = \DB::table('connections')->where('sender','=', $userName)->orWhere('receiver','=', $userName)->get();
+        $count = $query->Where('accepted','=',1)->count();
         $userprofile = Userprofile::all();
+        dd($userprofile);
         $connectionMe = \DB::table('connections')->select('receiver')->where('sender','=', $userName)->Where('accepted','=',true)->get();
         $myConnections = \DB::table('connections')->select('sender')->Where('receiver','=', $userName)->Where('accepted','=',true)->get();
+        
         return view('connections.index', compact('count','userprofile', 'myConnections', 'connectionMe'));
     }
 
@@ -65,7 +68,7 @@ class ConnectionController extends Controller
         $connection->sender=$user;
         $connection->receiver=$userName;
         $connection->accepted=$accepted;
-        $results = \DB::table('connections')->select('sender')->where('receiver', '=', $connection)->count();
+        $results = \DB::table('connections')->select('sender')->where('receiver', '=', $connection->receiver)->count();
         if ($results < 1) {
             $connection->save();
         }

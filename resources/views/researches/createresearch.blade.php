@@ -132,18 +132,6 @@
                             </div>
                         </div>
 
-                        <div class="form-group{{ $errors->has('researchpaper') ? ' has-error' : '' }}">
-                            <label for="researchpaper" class="col-md-4 control-label">Attach File</label>
-                            <div class="col-md-6">
-                                <input type="file" id="researchpaper" name="researchpaper" tyle="display: none;" onchange="pressed()">
-                               @if($errors->has('researchpaper'))
-                                    <p class="help-block">
-                                        {{ $errors->first('researchpaper') }}
-                                    </p>
-                                @endif
-                            </div>
-                        </div>
-
                         <div class="form-group">
                             <div class="col-md-6 col-md-offset-4"><br>
                                 <button type="submit" class="btn btn-primary">
