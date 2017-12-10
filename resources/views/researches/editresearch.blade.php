@@ -147,6 +147,39 @@
                         </div>
 
                         <div class="row">
+                            <div class="col-md-8 form-group">
+                                {!! Form::label('zipCode', 'Zip Code', ['class' => 'col-sm-4 control-label']) !!}
+                                <div class="col-sm-6 ">
+                                    {!! Form::text('zipCode', old('zipCode'), array('class' => 'form-control','id' => 'zipCode','required' => 'required'))!!}
+                                    <p class="help-block"></p>
+                                    @if($errors->has('zipCode'))
+                                        <p class="help-block">
+                                            {{ $errors->first('zipCode') }}
+                                        </p>
+                                    @endif
+                                </div> 
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-8 form-group">
+                                <div class="form-group{{ $errors->has('researchpaper') ? ' has-error' : '' }}">
+                                    
+                                    <label for="researchpaper" class="col-md-4 control-label">Attachment</label>
+                                    <div class="col-md-6">
+                                        <input id="researchpaper" type="file" name="researchpaper" value="{{ old('researchpaper') }}" required autofocus>
+
+                                        @if ($errors->has('researchpaper'))
+                                            <span class="help-block">
+                                                <strong>{{ $errors->first('researchpaper') }}</strong>
+                                            </span>
+                                        @endif
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
                             <div class="col-sm-12 panel-headinzzzzg">
                                 <label class="col-md-2 col-md-offset-2"></label>
                                 <div class="btn-bottom ">

@@ -7,12 +7,12 @@ use Illuminate\Http\Request;
 
 trait FormFileUploadTrait
 {
-    public function ResearchesUpload(Request $request)
+    public function ResearchesUpload(Request $request, $id)
     {
         if ($name = $request['researchpaper']) {
             $attachment = new Attachment();
             $attachment->name = $name;
-            // $attachment->researchID = $id;
+            $attachment->research_id = $id;
             $attachment->save();
         }
     }

@@ -57,10 +57,23 @@
                                 <strong>State: </strong>
                                 {{ $research->state }}
                             </div>
-                        </div><div class="col-xs-12 col-sm-12 col-md-12">
+                        </div>
+                        <div class="col-xs-12 col-sm-12 col-md-12">
                             <div class="form-group">
                                 <strong>Country: </strong>
                                 {{ $research->country }}
+                            </div>
+                        </div><br>
+                        <div class="col-xs-12 col-sm-12 col-md-12">
+                            <div class="form-group">
+                                <strong>Zip Code: </strong>
+                                {{ $research->zipCode }}
+                            </div>
+                        </div> <br>
+                        <div class="col-xs-12 col-sm-12 col-md-12">
+                            <div class="form-group">
+                                <strong>Research Paper: </strong>
+                                {{ $research->researchpaper }}
                             </div>
                         </div> <br>
                     </div>

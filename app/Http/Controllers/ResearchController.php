@@ -79,8 +79,9 @@ class ResearchController extends Controller
         $research->researchpaper = $request['researchpaper'];
 
         $request = $this->saveFiles($request);
-        $this-> ResearchesUpload($request);
         $research->save();
+        $id = \DB::table('researches')->orderBy('id','desc')->first();
+        $this-> ResearchesUpload($request, $id->id);
         
         return redirect('researches');
     }
