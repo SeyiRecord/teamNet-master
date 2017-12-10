@@ -14,6 +14,8 @@ use Illuminate\Support\Facades\Input;
 
 class ResearchController extends Controller
 {
+    use FileUploadTrait;
+    use FormFileUploadTrait;
     /**
      * Create a new controller instance.
      *
@@ -74,9 +76,10 @@ class ResearchController extends Controller
         $research->state= $request['state'];
         $research->country= $request['country'];
         $research->zipCode= $request['zipCode'];
-        // $research->researchpaper = $request['researchpaper'];
+        $research->researchpaper = $request['researchpaper'];
 
-        // $this-> ResearchesUpload($request);
+        $request = $this->saveFiles($request);
+        $this-> ResearchesUpload($request);
         $research->save();
         
         return redirect('researches');
@@ -138,7 +141,7 @@ class ResearchController extends Controller
             'state' => $research->state,
             'country' => $research->country,
             'zipCode' => $research->zipCode,
-            // 'researchpaper' => $research->researchpaper,
+            'researchpaper' => $research->researchpaper,
             ]);
         $research->update($request->all());
         return redirect('researches');

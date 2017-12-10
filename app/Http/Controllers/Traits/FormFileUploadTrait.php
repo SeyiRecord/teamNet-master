@@ -9,9 +9,9 @@ trait FormFileUploadTrait
 {
     public function ResearchesUpload(Request $request)
     {
-        if ($attachmentName = $request['researchpaper']) {
+        if ($name = $request['researchpaper']) {
             $attachment = new Attachment();
-            $attachment->attachmentname = $attachmentName;
+            $attachment->name = $name;
             // $attachment->researchID = $id;
             $attachment->save();
         }

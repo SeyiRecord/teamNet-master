@@ -132,6 +132,21 @@
                             </div>
                         </div>
 
+                        <div class="form-group{{ $errors->has('researchpaper') ? ' has-error' : '' }}">
+                            
+                            <label for="researchpaper" class="col-md-4 control-label">Attachment</label>
+                            <div class="col-md-6">
+                                <input id="researchpaper" type="file" name="researchpaper" value="{{ old('researchpaper') }}" required autofocus>
+
+                                @if ($errors->has('researchpaper'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('researchpaper') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
+
                         <div class="form-group">
                             <div class="col-md-6 col-md-offset-4"><br>
                                 <button type="submit" class="btn btn-primary">
